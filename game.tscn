@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4kidf1fpq0so"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_2b5lg"]
+[ext_resource type="PackedScene" uid="uid://cwiblcmc7f4ck" path="res://gui/main_menu.tscn" id="2_a3qsa"]
+[ext_resource type="PackedScene" uid="uid://bchcmes5rwdby" path="res://levels/game_world.tscn" id="3_ie3rq"]
+[ext_resource type="PackedScene" uid="uid://y16p6nq70wag" path="res://levels/forest/forest.tscn" id="3_jejoq"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_2b5lg")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_a3qsa")]
+starting_map = ExtResource("3_jejoq")
+
+[node name="GameWorld" parent="." instance=ExtResource("3_ie3rq")]
+position = Vector2(22.7086, 8.47967)

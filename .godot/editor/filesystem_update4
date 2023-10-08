@@ -1,0 +1,7 @@
+res://levels/tilesets/outside/tileset_outside.tres
+res://gui/main_menu.tscn
+res://gui/loading_screen.tscn
+res://game.tscn
+res://levels/game_world.tscn
+res://levels/forest/forest.tscn
+res://characters/character.tscn

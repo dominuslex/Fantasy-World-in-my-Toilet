@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfdngo6ib8bq8"]
+
+[ext_resource type="PackedScene" uid="uid://di3icw6uk1go8" path="res://characters/actors/xander.tscn" id="1_c14rs"]
+[ext_resource type="Script" path="res://characters/character.gd" id="1_xmma4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nqp0"]
+height = 42.0
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_xmma4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(0, -21)
+shape = SubResource("CapsuleShape2D_4nqp0")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_c14rs")]
+unique_name_in_owner = true
+position = Vector2(-1, -24)
+frame = 1
+frame_progress = 0.9083

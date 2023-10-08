@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://vl11qcvqyx6d"]
+
+[ext_resource type="Script" path="res://gui/loading_screen.gd" id="1_3iiwa"]
+
+[sub_resource type="Gradient" id="Gradient_2733s"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rxsyf"]
+gradient = SubResource("Gradient_2733s")
+
+[sub_resource type="Gradient" id="Gradient_g0nu2"]
+colors = PackedColorArray(0.682401, 0, 0.20768, 1, 1.44392e-07, 0.429484, 0.304019, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s1mkt"]
+gradient = SubResource("Gradient_g0nu2")
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3iiwa")
+
+[node name="CountdownLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -15.0
+offset_right = 128.0
+offset_bottom = 19.08
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_rxsyf")
+texture_progress = SubResource("GradientTexture1D_s1mkt")
