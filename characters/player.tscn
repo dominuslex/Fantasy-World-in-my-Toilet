@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtjb8bhqryne"]
+
+[ext_resource type="Script" path="res://characters/player.gd" id="1_31pma"]
+[ext_resource type="PackedScene" uid="uid://dfdngo6ib8bq8" path="res://characters/character.tscn" id="1_ydbdu"]
+[ext_resource type="Script" path="res://characters/player_camera.gd" id="3_7eqc1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_pnown"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_5hixl"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_v71jw"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_wkith"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_31pma")
+
+[node name="Character" parent="." instance=ExtResource("1_ydbdu")]
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(24, -2)
+zoom = Vector2(2, 2)
+process_callback = 0
+script = ExtResource("3_7eqc1")
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_pnown")
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("5_5hixl")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("6_v71jw")
+
+[node name="To Walking" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("7_wkith")
+to = NodePath("../../Walking")
+event = &"movement_started"
+
+[node name="Walking" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("6_v71jw")
+
+[node name="To Idle" type="Node" parent="StateChart/CompoundState/Walking"]
+script = ExtResource("7_wkith")
+to = NodePath("../../Idle")
+event = &"movement_completed"
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="Character" method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Walking" to="Character" method="_on_walking_state_entered"]
+[connection signal="state_processing" from="StateChart/CompoundState/Walking" to="Character" method="_on_walking_state_processing"]

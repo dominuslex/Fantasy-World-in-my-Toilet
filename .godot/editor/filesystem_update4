@@ -1,7 +1,12 @@
+res://characters/character.tscn
 res://levels/tilesets/outside/tileset_outside.tres
+res://characters/character.gd
 res://gui/main_menu.tscn
 res://gui/loading_screen.tscn
 res://game.tscn
 res://levels/game_world.tscn
 res://levels/forest/forest.tscn
-res://characters/character.tscn
+res://characters/player.tscn
+res://characters/actors/animate_state.gd
+res://characters/player.gd
+res://characters/player_camera.gd

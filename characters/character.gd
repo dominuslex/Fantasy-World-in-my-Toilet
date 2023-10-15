@@ -1,48 +1,96 @@
 extends CharacterBody2D
 
-const SPEED = 3000
+const MAX_SPEED = 150
 const TILE_SIZE = 24
 
+var speed = 0
+
+var direction : Vector2 = Vector2.ZERO
 var target_position : Vector2 = global_position
-var direction : Vector2
+var target_direction : Vector2
+var is_moving : bool
+
 var sprite : AnimatedSprite2D 
+var shape_cast : ShapeCast2D
+var animation_to_play : String
 
 func _ready():
-	sprite = get_node("%AnimatedSprite2D")
+	sprite = $AnimatedSprite2D
+	animation_to_play = $AnimatedSprite2D.animation
+	shape_cast = get_node("ShapeCast2D")
+	global_position = closest_vector(global_position, TILE_SIZE)
 
-func move(direction : Vector2) :
-	pass
 
 
-#func _physics_process(_delta):
-#
-#	if (direction):
-#		var global_position_nearest_tile : Vector2 = Vector2(closest_number(global_position.x, TILE_SIZE), closest_number(global_position.y, TILE_SIZE))
-#		#if global_position.distance_to(global_position_nearest_tile) > .2 :
-#		direction = direction * TILE_SIZE
-#		target_position = global_position_nearest_tile + direction
-#		print (target_position)
-#
-#	velocity = global_position.direction_to(target_position) * SPEED * _delta
-#
-#	if global_position.distance_to(target_position) > 2:
-#		move_and_slide()
-#
-#
-#	direction.x = Input.get_axis("ui_left", "ui_right")
-#	direction.y = Input.get_axis("ui_up", "ui_down")
-#
-#	print(global_position)
-#
-#func closest_number(number : int, divisor : int) :
-#	for i in divisor:
-#		if((number - i) % divisor == 0) :
-#			print(number - i)
-#			return number - i
-#		if ((number + i) % divisor == 0) :
-#			print (number + i)
-#			return number + i
-#	return number
+
+func _physics_process(_delta):
 	
-func animate():
-	sprite.play("walk_down")
+	speed = 0
+	
+	if not is_moving and direction != Vector2.ZERO :
+		target_direction = direction.normalized()
+		shape_cast.target_position = target_direction.round() * (TILE_SIZE + TILE_SIZE/4)
+		shape_cast.force_shapecast_update()
+		if not shape_cast.is_colliding() :
+			self.get_parent().get_node("%StateChart").send_event("movement_started")
+			target_position = global_position + (target_direction * TILE_SIZE)
+			is_moving = true
+	elif not is_moving:
+		self.get_parent().get_node("%StateChart").send_event("movement_completed") 
+			
+		
+	elif  is_moving:
+		speed = MAX_SPEED
+		velocity = speed * target_direction * _delta
+		var distance_to_target = global_position.distance_to(closest_vector(target_position,TILE_SIZE))
+		var move_distance = velocity.length()
+		if distance_to_target < move_distance:
+			velocity = target_direction * distance_to_target
+			is_moving = false
+			
+			
+		#print ("Pos: ", target_position, "; Velocity: ", velocity, "; Distance: ", distance_to_target)
+		move_and_collide(velocity)
+		
+
+
+
+func _on_walking_state_processing(_delta):
+	if direction.y > 0 :
+		animation_to_play = "walk_down"
+	elif direction.y < 0 :
+		animation_to_play = "walk_up"
+	if direction.x < 0 :
+		animation_to_play = "walk_left"
+	elif direction.x > 0 :
+		animation_to_play = "walk_right"
+	
+		
+	if animation_to_play != sprite.animation : 
+		sprite.animation = animation_to_play
+
+
+
+func _on_walking_state_entered():
+	sprite.play()
+
+
+func _on_idle_state_entered():
+	sprite.pause()
+	sprite.frame = 0
+	
+
+
+func closest_number(number : int, divisor : int):
+	for i in divisor:
+		if((number - i) % divisor == 0) :
+			return number - i
+		if ((number + i) % divisor == 0) :
+			return number + i
+	print("Error in closest number")
+	return number
+	
+func closest_vector(vector : Vector2, divisor : int):
+	var x = closest_number(vector.x, divisor)
+	var y = closest_number(vector.y, divisor)
+	return Vector2(x, y)
