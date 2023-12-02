@@ -1,5 +1,5 @@
 cffcf7cc5eb03ca20a5c49cce30ef619
-::res://::1698359835
+::res://::1701559472
 battle.tscn::PackedScene::1905516112600749297::1697840558::0::1::::<><>::uid://osc6kkqya8fc
 Battler.gd::GDScript::-1::1698275837::0::1::::<>Node2D<>::
 game.gd::GDScript::-1::1696653120::0::1::::<>Node<>::
@@ -203,12 +203,12 @@ stat_99_weak.tres::Curve::4594141147756667216::1698272445::0::1::::<><>::
 stat_999_beefy.tres::Curve::7353207273893558448::1697856465::0::1::::<><>::
 stat_999_mid.tres::Curve::4243129963628424684::1697856426::0::1::::<><>::
 stat_999_weak.tres::Curve::7530708239445015056::1698273756::0::1::::<><>::
-::res://characters/::1698360140
+::res://characters/::1698360631
 character.gd::GDScript::-1::1698360140::0::1::::Character<>CharacterBody2D<>::
 character.tscn::PackedScene::7517200221782995229::1698323351::0::1::::<><>::uid://di3icw6uk1go8
 player.gd::GDScript::-1::1698272647::0::1::::<>Node2D<>::
 player.tscn::PackedScene::7620168264118921158::1698323252::0::1::::<><>::uid://dfdngo6ib8bq8
-player_.tscn::PackedScene::3288458000071588279::1698360140::0::1::::<><>::uid://dfdngo6ib8bq8::::res://characters/character.tscn<>res://characters/player_camera.gd<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>res://addons/godot_state_charts/transition.gd
+player_.tscn::PackedScene::3288458000071588279::1698360631::0::1::::<><>::uid://dfdngo6ib8bq8::::res://characters/character.tscn<>res://characters/player_camera.gd<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>res://addons/godot_state_charts/transition.gd
 player_camera.gd::GDScript::-1::1697330010::0::1::::<>Camera2D<>::
 player_stats.tres::Resource/Resource::1304509927751176866::1698273687::0::1::::<><>::res://battle/monsters/stats.gd
 shadow.png::CompressedTexture2D::5361718997393872383::1696843921::1696843923::1::::<><>::
@@ -217,10 +217,10 @@ animate_state.gd::GDScript::-1::1697331023::0::1::::<>AnimatedSprite2D<>::
 Xander.aseprite::PackedScene::291550549024559287::1695980825::1695987605::1::::<><>::uid://biqcwxtdy6pgb
 Xander.png::CompressedTexture2D::2981123435871708705::1695987605::1695981362::1::::<><>::
 xander.tscn::PackedScene::7779065889152918725::1696652355::0::1::::<><>::uid://efh2a7tpg8br
-::res://characters/commands/::1698360054
+::res://characters/commands/::1698360631
 command.gd::GDScript::-1::1698359839::0::1::::Command<>RefCounted<>::
-command_movement.gd::GDScript::-1::1698360053::0::1::::MovementCommand<>Command<>::
-Controller.gd::GDScript::-1::1698360442::0::1::::<>Node<>::
+command_movement.gd::GDScript::-1::1698360590::0::1::::MovementCommand<>Command<>::
+controller.gd::GDScript::-1::1698360631::0::1::::Controller<>Node<>::
 ::res://characters/npcs/::1695979064
 ::res://docs/::1695955895
 ::res://gui/::1698323351
