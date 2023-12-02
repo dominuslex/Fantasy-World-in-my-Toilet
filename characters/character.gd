@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Character
+
 const MAX_SPEED = 150
 const TILE_SIZE = 24
 
@@ -14,6 +16,8 @@ var sprite : AnimatedSprite2D
 var shape_cast : ShapeCast2D
 var animation_to_play : String
 
+@onready var state_chart = get_node("%StateChart")
+
 func _ready():
 	sprite = $AnimatedSprite2D
 	animation_to_play = $AnimatedSprite2D.animation
@@ -21,7 +25,8 @@ func _ready():
 	global_position = closest_vector(global_position, TILE_SIZE)
 
 
-
+func move(value: Vector2):
+	direction = value
 
 func _physics_process(_delta):
 	
@@ -29,14 +34,14 @@ func _physics_process(_delta):
 	
 	if not is_moving and direction != Vector2.ZERO :
 		target_direction = direction.normalized()
-		shape_cast.target_position = target_direction.round() * (TILE_SIZE + TILE_SIZE/4)
+		shape_cast.target_position = target_direction.round() * roundi(TILE_SIZE + TILE_SIZE/4)
 		shape_cast.force_shapecast_update()
 		if not shape_cast.is_colliding() :
-			self.get_parent().get_node("%StateChart").send_event("movement_started")
+			state_chart.send_event("movement_started")
 			target_position = global_position + (target_direction * TILE_SIZE)
 			is_moving = true
 	elif not is_moving:
-		self.get_parent().get_node("%StateChart").send_event("movement_completed") 
+		state_chart.send_event("movement_completed") 
 			
 		
 	elif  is_moving:

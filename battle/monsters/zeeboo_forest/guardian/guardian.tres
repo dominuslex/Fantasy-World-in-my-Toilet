@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=4 format=3 uid="uid://yoyer567u34f"]
+
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://battle/stat curves/default_stat_99_curve.tres" id="1_t4vj3"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://battle/stat curves/default_stat_999_curve.tres" id="2_b7q6n"]
+[ext_resource type="Script" path="res://battle/monsters/stats.gd" id="2_nwqrb"]
+
+[resource]
+script = ExtResource("2_nwqrb")
+level = 29
+hp = 344
+mp = 344
+st = 35
+ma = 35
+sp = 35
+en = 35
+ag = 35
+lu = 35
+hp_curve = ExtResource("2_b7q6n")
+mp_curve = ExtResource("2_b7q6n")
+st_curve = ExtResource("1_t4vj3")
+ma_curve = ExtResource("1_t4vj3")
+sp_curve = ExtResource("1_t4vj3")
+en_curve = ExtResource("1_t4vj3")
+ag_curve = ExtResource("1_t4vj3")
+lu_curve = ExtResource("1_t4vj3")

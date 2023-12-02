@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgtjb8bhqryne"]
+[gd_scene load_steps=7 format=3 uid="uid://dgtjb8bhqryne"]
 
-[ext_resource type="Script" path="res://characters/player.gd" id="1_31pma"]
 [ext_resource type="PackedScene" uid="uid://dfdngo6ib8bq8" path="res://characters/character.tscn" id="1_ydbdu"]
 [ext_resource type="Script" path="res://characters/player_camera.gd" id="3_7eqc1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_pnown"]
@@ -9,7 +8,6 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_wkith"]
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_31pma")
 
 [node name="Character" parent="." instance=ExtResource("1_ydbdu")]
 

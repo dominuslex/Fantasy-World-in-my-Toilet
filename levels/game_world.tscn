@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bchcmes5rwdby"]
 
 [ext_resource type="PackedScene" uid="uid://y16p6nq70wag" path="res://levels/forest/forest.tscn" id="1_sfgm7"]
-[ext_resource type="PackedScene" uid="uid://dgtjb8bhqryne" path="res://characters/player.tscn" id="2_hwl8f"]
+[ext_resource type="PackedScene" uid="uid://bm37om1gfu3ih" path="res://characters/player_.tscn" id="2_1x8kb"]
 
 [node name="GameWorld" type="Node2D"]
 
 [node name="Node2d" parent="." instance=ExtResource("1_sfgm7")]
 
-[node name="Player" parent="." instance=ExtResource("2_hwl8f")]
-position = Vector2(336, 48)
+[node name="Character" parent="." instance=ExtResource("2_1x8kb")]
+position = Vector2(351, 52)

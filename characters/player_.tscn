@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm37om1gfu3ih"]
+
+[ext_resource type="PackedScene" uid="uid://dfdngo6ib8bq8" path="res://characters/character.tscn" id="1_du5vi"]
+[ext_resource type="Script" path="res://characters/player_camera.gd" id="2_wwsa8"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_7472r"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_y4v1d"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_q7xs7"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_2a4kp"]
+
+[node name="Character" instance=ExtResource("1_du5vi")]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+position = Vector2(24, -2)
+zoom = Vector2(2, 2)
+process_callback = 0
+script = ExtResource("2_wwsa8")
+
+[node name="StateChart" type="Node" parent="." index="4"]
+unique_name_in_owner = true
+script = ExtResource("3_7472r")
+
+[node name="CompoundState" type="Node" parent="StateChart" index="0"]
+script = ExtResource("4_y4v1d")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState" index="0"]
+script = ExtResource("5_q7xs7")
+
+[node name="To Walking" type="Node" parent="StateChart/CompoundState/Idle" index="0"]
+script = ExtResource("6_2a4kp")
+to = NodePath("../../Walking")
+event = &"movement_started"
+
+[node name="Walking" type="Node" parent="StateChart/CompoundState" index="1"]
+script = ExtResource("5_q7xs7")
+
+[node name="To Idle" type="Node" parent="StateChart/CompoundState/Walking" index="0"]
+script = ExtResource("6_2a4kp")
+to = NodePath("../../Idle")
+event = &"movement_completed"
+
+[node name="ControllerContainer" type="Node" parent="." index="5"]
+
+[node name="Node" type="Node" parent="ControllerContainer" index="0"]
