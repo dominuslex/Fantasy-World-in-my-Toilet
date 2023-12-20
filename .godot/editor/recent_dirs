@@ -1,15 +1,9 @@
+res://game_logic/battle
+res://
+res://characters/heroes/luke/battler/attack
 res://characters/commands
 res://characters
-res://battle
-res://battle/monsters/zeeboo_forest/guardian
-res://battle/monsters/zeeboo_forest/acorn_twins
-res://battle/monsters
-res://
-res://scripts/components
-res://scripts
 res://levels/forest
-res://objects
-res://characters/actors
 C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 res://levels
 C:/Users/dumas/Documents/Godot_Repository/New Game Project

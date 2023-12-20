@@ -1,3 +1,5 @@
+Skill
+Resource
 Stats
 Curve2D
 Curve

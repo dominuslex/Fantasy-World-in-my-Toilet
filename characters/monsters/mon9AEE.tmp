@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmbc8623lhyxo"]
+
+[ext_resource type="Script" path="res://battle/Battler.gd" id="1_2s6te"]
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://battle/stat curves/default_stat_999_curve.tres" id="3_w5i3q"]
+[ext_resource type="Script" path="res://battle/monsters/stats.gd" id="4_l1sl7"]
+[ext_resource type="PackedScene" uid="uid://cv551n5ylvx00" path="res://battle/Abilities/attack/attack.tscn" id="5_3uham"]
+
+[sub_resource type="Resource" id="Resource_6eync"]
+script = ExtResource("4_l1sl7")
+level = 1
+hp = 10
+mp = 1
+strength = 1
+magic = 1
+spirit = 1
+endurance = 1
+agility = 1
+luck = 1
+hp_curve = ExtResource("3_w5i3q")
+mp_curve = ExtResource("3_w5i3q")
+st_curve = ExtResource("2_dwcub")
+ma_curve = ExtResource("2_dwcub")
+sp_curve = ExtResource("2_dwcub")
+en_curve = ExtResource("2_dwcub")
+ag_curve = ExtResource("2_dwcub")
+lu_curve = ExtResource("2_dwcub")
+exp_needed_curve = ExtResource("3_w5i3q")
+
+[node name="monster" type="Node2D"]
+script = ExtResource("1_2s6te")
+stats = SubResource("Resource_6eync")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Attack" parent="Abilities" instance=ExtResource("5_3uham")]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Attack"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

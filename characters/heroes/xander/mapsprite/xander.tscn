@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di3icw6uk1go8"]
+
+[ext_resource type="PackedScene" uid="uid://efh2a7tpg8br" path="res://characters/heroes/xander/mapsprite/Xander.aseprite" id="1_q4syp"]
+
+[node name="Xander" instance=ExtResource("1_q4syp")]
+animation = &"walk_left"

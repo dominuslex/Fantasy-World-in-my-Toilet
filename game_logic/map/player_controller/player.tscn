@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgtjb8bhqryne"]
+
+[ext_resource type="Script" path="res://game_logic/map/player_controller/player.gd" id="1_lx52n"]
+[ext_resource type="PackedScene" uid="uid://dfdngo6ib8bq8" path="res://game_logic/map/map_characters/character.tscn" id="2_ilk0p"]
+[ext_resource type="Script" path="res://game_logic/map/player_controller/player_camera.gd" id="3_ecvsb"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_lx52n")
+
+[node name="Character" parent="." instance=ExtResource("2_ilk0p")]
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(24, -2)
+zoom = Vector2(2, 2)
+process_callback = 0
+script = ExtResource("3_ecvsb")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfdngo6ib8bq8"]
+
+[ext_resource type="Script" path="res://game_logic/map/map_characters/character.gd" id="1_jajio"]
+[ext_resource type="PackedScene" uid="uid://di3icw6uk1go8" path="res://characters/heroes/xander/mapsprite/xander.tscn" id="2_lxnec"]
+[ext_resource type="Script" path="res://game_logic/map/map_characters/animate_state.gd" id="3_7bv8m"]
+[ext_resource type="Texture2D" uid="uid://ciniy1gfbixfj" path="res://game_logic/map/map_characters/shadow.png" id="4_osqwy"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_0mh4b"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_x656o"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_pd1tn"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_0fc2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snqch"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcjux"]
+size = Vector2(6, 6)
+
+[node name="Character" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_jajio")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_lxnec")]
+position = Vector2(24, -6)
+frame = 3
+frame_progress = 0.142337
+script = ExtResource("3_7bv8m")
+
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(0, 24)
+texture = ExtResource("4_osqwy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_snqch")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+position = Vector2(24, 18)
+shape = SubResource("RectangleShape2D_qcjux")
+target_position = Vector2(0, 20)
+max_results = 6
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_0mh4b")
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("6_x656o")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("7_pd1tn")
+
+[node name="To Walking" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("8_0fc2h")
+to = NodePath("../../Walking")
+event = &"movement_started"
+
+[node name="Walking" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("7_pd1tn")
+
+[node name="To Idle" type="Node" parent="StateChart/CompoundState/Walking"]
+script = ExtResource("8_0fc2h")
+to = NodePath("../../Idle")
+event = &"movement_completed"
+
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Walking" to="." method="_on_walking_state_entered"]
+[connection signal="state_processing" from="StateChart/CompoundState/Walking" to="." method="_on_walking_state_processing"]
