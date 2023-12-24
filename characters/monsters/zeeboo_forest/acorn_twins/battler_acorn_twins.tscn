@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cell8nqu7f4vu"]
+
+[ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://game_logic/battle/battler.tscn" id="1_iuvnv"]
+[ext_resource type="Texture2D" uid="uid://yflfcfahprg0" path="res://characters/monsters/zeeboo_forest/acorn_twins/acorn_twins_texture.png" id="2_igqjn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nypwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_igqjn")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_igqjn")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_igqjn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="AcornTwinsBattler" instance=ExtResource("1_iuvnv")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_nypwh")
+animation = &"hit"
+
+[node name="Button" parent="." index="2"]
+offset_left = -32.0
+offset_top = 65.0
+offset_right = 26.0
+offset_bottom = 96.0

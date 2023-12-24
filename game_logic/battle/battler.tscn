@@ -1,30 +1,180 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba287m0r2nirw"]
+[gd_scene load_steps=32 format=3 uid="uid://dmbc8623lhyxo"]
 
-[ext_resource type="Script" path="res://game_logic/battle/Battler.gd" id="1_cpjcq"]
-[ext_resource type="Resource" uid="uid://tpqvwtek5r6o" path="res://game_logic/battle/battler_stats.tres" id="2_tk4fv"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_oranp"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_16or7"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_ufaro"]
+[ext_resource type="Script" path="res://game_logic/battle/battler.gd" id="1_nwsdr"]
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_w5i3q"]
+[ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_l1sl7"]
+[ext_resource type="PackedScene" uid="uid://cv551n5ylvx00" path="res://game_logic/battle/Abilities/attack/attack.tscn" id="5_3uham"]
+[ext_resource type="Texture2D" uid="uid://ndlcngtixf7r" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_1.png" id="5_vxh0u"]
+[ext_resource type="Texture2D" uid="uid://b1hlvtr3yxyum" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_2.png" id="6_flt7j"]
+[ext_resource type="Texture2D" uid="uid://b1py18t12qpng" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_3.png" id="7_jrdge"]
+[ext_resource type="Texture2D" uid="uid://sllgwslapt41" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_4.png" id="8_yyxbs"]
+[ext_resource type="Texture2D" uid="uid://bvy0fayqbthug" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_5.png" id="9_8d7rq"]
+[ext_resource type="Texture2D" uid="uid://dgichw11oaur2" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_6.png" id="10_tlybv"]
+[ext_resource type="Texture2D" uid="uid://n6vq6vbr1ytp" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_7.png" id="11_atggq"]
+[ext_resource type="Texture2D" uid="uid://di0fec30cklrw" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_8.png" id="12_u3cll"]
+[ext_resource type="Texture2D" uid="uid://gl3ashr5q3u7" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_9.png" id="13_wsutd"]
+[ext_resource type="Texture2D" uid="uid://l624pmirmvgf" path="res://characters/heroes/luke/battler/idle/lukeidlenew1.png" id="14_xen4k"]
+[ext_resource type="Texture2D" uid="uid://bvwqlx31le68f" path="res://characters/heroes/luke/battler/idle/lukeidlenew2.png" id="15_vnng4"]
+[ext_resource type="Texture2D" uid="uid://bn867vejcio6c" path="res://characters/heroes/luke/battler/idle/lukeidlenew3.png" id="16_l4pam"]
+[ext_resource type="Texture2D" uid="uid://bq65nmmke00vt" path="res://characters/heroes/luke/battler/idle/lukeidlenew4.png" id="17_b4ad7"]
+[ext_resource type="Texture2D" uid="uid://bbc2yjm0r50u2" path="res://characters/heroes/luke/battler/idle/lukeidlenew5.png" id="18_qwicq"]
+[ext_resource type="Texture2D" uid="uid://brts2wy7glhl4" path="res://characters/heroes/luke/battler/idle/lukeidlenew6.png" id="19_0tbhp"]
+[ext_resource type="Texture2D" uid="uid://wr7gwfy54e7a" path="res://characters/heroes/luke/battler/idle/lukeidlenew7.png" id="20_b0vwf"]
+[ext_resource type="Texture2D" uid="uid://dkuewdiolcg23" path="res://characters/heroes/luke/battler/idle/lukeidlenew8.png" id="21_82kdv"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="22_g1rvd"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="23_kuggk"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="24_6rim3"]
+[ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="26_al4r1"]
+
+[sub_resource type="Resource" id="Resource_6eync"]
+script = ExtResource("4_l1sl7")
+level = 1
+hp = 100
+mp = 1
+strength = 10
+magic = 1
+spirit = 1
+endurance = 8
+agility = 1
+luck = 1
+hp_curve = ExtResource("3_w5i3q")
+mp_curve = ExtResource("3_w5i3q")
+st_curve = ExtResource("2_dwcub")
+ma_curve = ExtResource("2_dwcub")
+sp_curve = ExtResource("2_dwcub")
+en_curve = ExtResource("2_dwcub")
+ag_curve = ExtResource("2_dwcub")
+lu_curve = ExtResource("2_dwcub")
+exp_needed_curve = ExtResource("3_w5i3q")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bmgqm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlk5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vxh0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_flt7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jrdge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yyxbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8d7rq")
+}, {
+"duration": 1.5,
+"texture": ExtResource("10_tlybv")
+}, {
+"duration": 0.25,
+"texture": ExtResource("11_atggq")
+}, {
+"duration": 0.25,
+"texture": ExtResource("12_u3cll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wsutd")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xen4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vnng4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l4pam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b4ad7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qwicq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0tbhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_b0vwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_82kdv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58gf7"]
+radius = 45.625
+height = 221.25
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhdut"]
+_data = {
+"attack": ExtResource("26_al4r1")
+}
 
 [node name="Battler" type="Node2D"]
-script = ExtResource("1_cpjcq")
-stats = ExtResource("2_tk4fv")
+script = ExtResource("1_nwsdr")
+stats = SubResource("Resource_6eync")
 
-[node name="StateChart" type="Node" parent="."]
-script = ExtResource("3_oranp")
+[node name="Button" type="Button" parent="."]
+offset_left = -42.0
+offset_top = 174.0
+offset_right = 16.0
+offset_bottom = 205.0
+text = "Attack"
 
-[node name="CompoundState" type="Node" parent="StateChart"]
-script = ExtResource("4_16or7")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_bmgqm")
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_tlk5l")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StateChart" type="Node" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+script = ExtResource("22_g1rvd")
+
+[node name="CompoundState" type="Node" parent="AnimatedSprite2D/StateChart"]
+script = ExtResource("23_kuggk")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateChart/CompoundState"]
-script = ExtResource("5_ufaro")
+[node name="Idle" type="Node" parent="AnimatedSprite2D/StateChart/CompoundState"]
+script = ExtResource("24_6rim3")
 
-[node name="Think" type="Node" parent="StateChart/CompoundState"]
-script = ExtResource("5_ufaro")
+[node name="UseAbility" type="Node" parent="AnimatedSprite2D/StateChart/CompoundState"]
+script = ExtResource("24_6rim3")
 
-[node name="Wait" type="Node" parent="StateChart/CompoundState"]
-script = ExtResource("5_ufaro")
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(-40, 16)
 
-[node name="Act" type="Node" parent="StateChart/CompoundState"]
-script = ExtResource("5_ufaro")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(29.375, 31.875)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_58gf7")
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Attack" parent="Abilities" instance=ExtResource("5_3uham")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_dhdut")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]

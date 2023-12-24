@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtp01stg1ewws"]
+
+[ext_resource type="Script" path="res://game_logic/battle/battle_scene.gd" id="1_isa2j"]
+[ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://characters/monsters/monster.tscn" id="2_ycs8g"]
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="3_aptki"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="4_37uwg"]
+[ext_resource type="Script" path="res://characters/monsters/stats.gd" id="5_nl5kg"]
+[ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="6_3tijb"]
+
+[sub_resource type="Resource" id="Resource_8sdiu"]
+script = ExtResource("5_nl5kg")
+level = 1
+hp = 100
+mp = 1
+strength = 10
+magic = 1
+spirit = 1
+endurance = 8
+agility = 1
+luck = 1
+hp_curve = ExtResource("4_37uwg")
+mp_curve = ExtResource("4_37uwg")
+st_curve = ExtResource("3_aptki")
+ma_curve = ExtResource("3_aptki")
+sp_curve = ExtResource("3_aptki")
+en_curve = ExtResource("3_aptki")
+ag_curve = ExtResource("3_aptki")
+lu_curve = ExtResource("3_aptki")
+exp_needed_curve = ExtResource("4_37uwg")
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6de0"]
+_data = {
+"attack": ExtResource("6_3tijb")
+}
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_isa2j")
+
+[node name="Monsters" type="Node2D" parent="."]
+
+[node name="Monster" parent="Monsters" instance=ExtResource("2_ycs8g")]
+position = Vector2(495, 42)
+scale = Vector2(-1, 1)
+stats = SubResource("Resource_8sdiu")
+
+[node name="Heroes" type="Node2D" parent="."]
+
+[node name="Monster" parent="Heroes" instance=ExtResource("2_ycs8g")]
+position = Vector2(117, 37)
+
+[node name="BattleAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"abilities": SubResource("AnimationLibrary_t6de0")
+}
+
+[editable path="Monsters/Monster"]

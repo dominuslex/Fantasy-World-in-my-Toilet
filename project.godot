@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG in Toilet"
-run/main_scene="res://game.tscn"
+run/main_scene="res://game_logic/game.tscn"
 config/features=PackedStringArray("4.2")
 
 [aseprite_importers]
@@ -20,8 +20,10 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/extend_to_title=true
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

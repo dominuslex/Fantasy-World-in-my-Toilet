@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtp01stg1ewws"]
+
+[ext_resource type="Script" path="res://game_logic/battle/battle_scene.gd" id="1_isa2j"]
+[ext_resource type="PackedScene" uid="uid://rgdneyq12il0" path="res://characters/heroes/luke/battler/battler_luke.tscn" id="2_2hqxe"]
+[ext_resource type="PackedScene" uid="uid://cell8nqu7f4vu" path="res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn" id="3_n5qkm"]
+[ext_resource type="PackedScene" uid="uid://xhm601vw1nbk" path="res://characters/heroes/xander/battler/battler_xander.tscn" id="4_utxd1"]
+[ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="6_3tijb"]
+
+[sub_resource type="Animation" id="Animation_pgdgw"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87g75"]
+_data = {
+"RESET": SubResource("Animation_pgdgw")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6de0"]
+_data = {
+"attack": ExtResource("6_3tijb")
+}
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_isa2j")
+
+[node name="BattleAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_87g75"),
+"abilities": SubResource("AnimationLibrary_t6de0")
+}
+
+[node name="Monsters" type="Node2D" parent="."]
+
+[node name="Battler" parent="Monsters" instance=ExtResource("3_n5qkm")]
+position = Vector2(153, 205)
+
+[node name="Heroes" type="Node2D" parent="."]
+
+[node name="LukeBattler" parent="Heroes" instance=ExtResource("2_2hqxe")]
+position = Vector2(666, 79)
+
+[node name="XanderBattler" parent="Heroes" instance=ExtResource("4_utxd1")]
+position = Vector2(702, 322)
+
+[editable path="Monsters/Battler"]
+[editable path="Heroes/LukeBattler"]
+[editable path="Heroes/XanderBattler"]

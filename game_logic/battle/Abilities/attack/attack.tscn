@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv551n5ylvx00"]
+[gd_scene load_steps=4 format=3 uid="uid://cv551n5ylvx00"]
 
 [ext_resource type="Script" path="res://game_logic/battle/Abilities/attack/attack.gd" id="1_wcef4"]
+[ext_resource type="AudioStream" uid="uid://ce2h28edb57pw" path="res://audio/sfx/footstep grass light step.wav" id="2_qdnyg"]
+[ext_resource type="AudioStream" uid="uid://c2rddn48yd73e" path="res://audio/sfx/spatula hit 26.wav" id="3_tss1t"]
 
 [node name="Attack" type="Node2D"]
 script = ExtResource("1_wcef4")
+sound_run = ExtResource("2_qdnyg")
+sound_attack = ExtResource("3_tss1t")

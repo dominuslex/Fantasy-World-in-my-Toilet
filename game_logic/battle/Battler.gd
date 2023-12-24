@@ -4,6 +4,8 @@ class_name Battler
 @export var stats : Stats
 @onready var state_chart : StateChart = get_node("%StateChart")
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_origin : Vector2 = sprite.global_position
+@onready var audio_stream : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready():
 	stats.current_hp = stats.hp
@@ -59,4 +61,9 @@ func battle_init():
 
 
 func _on_button_pressed():
-	use_ability($Abilities/Attack)
+	use_ability($Abilities/Attack,self, find_parent("BattleScene").find_child("Battler"))
+
+
+func _on_area_2d_mouse_entered():
+	print(self.name)
+	pass # Replace with function body.
