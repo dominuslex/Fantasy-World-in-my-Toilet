@@ -3,6 +3,7 @@ extends Node2D
 class_name Ability
 
 var battle_animation_player : AnimationPlayer
+var targets
 	
 	
 func _ready():
@@ -10,11 +11,13 @@ func _ready():
 	if battle_scene :
 		battle_animation_player = battle_scene.get_node("BattleAnimationPlayer")
 
-func use(user : Battler, target : Battler):
+func use(user : Battler, target):
 	print(user.name, " v. ", target.name)
 	pass
 	
 func run_to_target(user: Battler, target : Battler) -> bool:
+	user.audio_stream.stream = ResourceLoader.load("res://audio/sfx/footstep grass light step.wav")
+	user.audio_stream.play()
 	var tween = create_tween()
 	tween.tween_property(
 		user.sprite, 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://dmbc8623lhyxo"]
+[gd_scene load_steps=37 format=3 uid="uid://dmbc8623lhyxo"]
 
 [ext_resource type="Script" path="res://game_logic/battle/battler.gd" id="1_nwsdr"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
 [ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_w5i3q"]
 [ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_l1sl7"]
+[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="5_3q2tc"]
 [ext_resource type="PackedScene" uid="uid://cv551n5ylvx00" path="res://game_logic/battle/Abilities/attack/attack.tscn" id="5_3uham"]
 [ext_resource type="Texture2D" uid="uid://ndlcngtixf7r" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_1.png" id="5_vxh0u"]
 [ext_resource type="Texture2D" uid="uid://b1hlvtr3yxyum" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_2.png" id="6_flt7j"]
@@ -26,6 +27,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="23_kuggk"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="24_6rim3"]
 [ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="26_al4r1"]
+[ext_resource type="Texture2D" uid="uid://i2pguwm0p50a" path="res://gui/white_circle.aseprite" id="27_v8ek6"]
 
 [sub_resource type="Resource" id="Resource_6eync"]
 script = ExtResource("4_l1sl7")
@@ -48,7 +50,13 @@ ag_curve = ExtResource("2_dwcub")
 lu_curve = ExtResource("2_dwcub")
 exp_needed_curve = ExtResource("3_w5i3q")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bmgqm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58gf7"]
+radius = 45.125
+height = 90.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78ikj"]
+shader = ExtResource("5_3q2tc")
+shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlk5l"]
 animations = [{
@@ -114,13 +122,46 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58gf7"]
-radius = 45.625
-height = 221.25
+[sub_resource type="Animation" id="Animation_rmp5i"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.461604, 0.496479),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_13d07"]
+resource_name = "test"
+
+[sub_resource type="Animation" id="Animation_sydk7"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0699761),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhdut"]
 _data = {
-"attack": ExtResource("26_al4r1")
+"attack": ExtResource("26_al4r1"),
+"death": SubResource("Animation_sydk7"),
+"hit": SubResource("Animation_rmp5i"),
+"test": SubResource("Animation_13d07")
 }
 
 [node name="Battler" type="Node2D"]
@@ -134,12 +175,19 @@ offset_right = 16.0
 offset_bottom = 205.0
 text = "Attack"
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-39, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(29.375, 31.875)
+shape = SubResource("CapsuleShape2D_58gf7")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_bmgqm")
+material = SubResource("ShaderMaterial_78ikj")
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_tlk5l")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="StateChart" type="Node" parent="AnimatedSprite2D"]
@@ -156,14 +204,6 @@ script = ExtResource("24_6rim3")
 [node name="UseAbility" type="Node" parent="AnimatedSprite2D/StateChart/CompoundState"]
 script = ExtResource("24_6rim3")
 
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-position = Vector2(-40, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-position = Vector2(29.375, 31.875)
-scale = Vector2(1, 1)
-shape = SubResource("CapsuleShape2D_58gf7")
-
 [node name="Abilities" type="Node" parent="."]
 
 [node name="Attack" parent="Abilities" instance=ExtResource("5_3uham")]
@@ -176,5 +216,22 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
+[node name="HPTextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = 168.0
+offset_right = 39.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("27_v8ek6")
+tint_progress = Color(0.176471, 0.482353, 0, 1)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="mouse_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

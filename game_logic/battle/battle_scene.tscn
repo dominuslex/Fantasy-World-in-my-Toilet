@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://game_logic/battle/battle_scene.gd" id="1_isa2j"]
 [ext_resource type="PackedScene" uid="uid://rgdneyq12il0" path="res://characters/heroes/luke/battler/battler_luke.tscn" id="2_2hqxe"]
-[ext_resource type="Texture2D" uid="uid://bwlg3dbmce6ae" path="res://levels/Realistic BGs/bg1-1.png" id="2_5athy"]
 [ext_resource type="PackedScene" uid="uid://cell8nqu7f4vu" path="res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn" id="3_n5qkm"]
+[ext_resource type="Texture2D" uid="uid://blubld1uq2bfi" path="res://levels/bg_grass_plains.png" id="3_nrp2k"]
 [ext_resource type="PackedScene" uid="uid://xhm601vw1nbk" path="res://characters/heroes/xander/battler/battler_xander.tscn" id="4_utxd1"]
 [ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="6_3tijb"]
 
@@ -23,11 +23,6 @@ _data = {
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_isa2j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(387, 246)
-scale = Vector2(1.9383, 1.9383)
-texture = ExtResource("2_5athy")
-
 [node name="BattleAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -35,43 +30,45 @@ libraries = {
 "abilities": SubResource("AnimationLibrary_t6de0")
 }
 
+[node name="BattleBackground" type="Sprite2D" parent="."]
+texture = ExtResource("3_nrp2k")
+
 [node name="Monsters" type="Node2D" parent="."]
 
-[node name="Battler" parent="Monsters" instance=ExtResource("3_n5qkm")]
-position = Vector2(57, 376)
-
-[node name="Button" parent="Monsters/Battler" index="0"]
-offset_left = -44.0
-offset_top = 67.0
-offset_right = 14.0
-offset_bottom = 98.0
-
-[node name="AnimatedSprite2D" parent="Monsters/Battler" index="1"]
-material = null
+[node name="AcornTwinsBattler" parent="Monsters" instance=ExtResource("3_n5qkm")]
+position = Vector2(-272, -12)
 
 [node name="Heroes" type="Node2D" parent="."]
 
 [node name="LukeBattler" parent="Heroes" instance=ExtResource("2_2hqxe")]
-position = Vector2(639, 198)
+position = Vector2(322, -139)
 
-[node name="AnimatedSprite2D" parent="Heroes/LukeBattler" index="1"]
+[node name="AnimatedSprite2D" parent="Heroes/LukeBattler" index="2"]
 material = null
 position = Vector2(0, 0)
-animation = &"attack"
+
+[node name="HPTextureProgressBar" parent="Heroes/LukeBattler" index="6"]
+offset_left = 42.0
+offset_top = -11.0
+offset_right = 170.0
+offset_bottom = 117.0
 
 [node name="XanderBattler" parent="Heroes" instance=ExtResource("4_utxd1")]
-position = Vector2(690, 460)
+position = Vector2(373, 123)
 
-[node name="AnimatedSprite2D" parent="Heroes/XanderBattler" index="1"]
+[node name="AnimatedSprite2D" parent="Heroes/XanderBattler" index="2"]
 material = null
 position = Vector2(0, 0)
-animation = &"attack"
 frame = 6
 frame_progress = 1.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(335, 344)
+[node name="HPTextureProgressBar" parent="Heroes/XanderBattler" index="6"]
+offset_left = 42.0
+offset_top = -11.0
+offset_right = 170.0
+offset_bottom = 117.0
 
-[editable path="Monsters/Battler"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [editable path="Heroes/LukeBattler"]
 [editable path="Heroes/XanderBattler"]

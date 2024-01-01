@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG in Toilet"
-run/main_scene="res://game_logic/game.tscn"
+run/main_scene="res://game_logic/battle/battle_scene.tscn"
 config/features=PackedStringArray("4.2")
 
 [aseprite_importers]

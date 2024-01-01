@@ -1,5 +1,6 @@
 res://game_logic/battle/battler.tscn
 res://levels/tilesets/outside/tileset_outside.tres
+res://game_logic/battle/battler.gd
 res://game_logic/battle/battle_scene.tscn
 res://game_logic/game.tscn
 res://levels/game_world.tscn
@@ -8,7 +9,8 @@ res://game_logic/map/player_controller/player.tscn
 res://characters/heroes/luke/battler/battler_luke.tscn
 res://characters/heroes/xander/battler/battler_xander.tscn
 res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn
-res://game_logic/battle/Abilities/attack/attack.gd
-res://game_logic/battle/Abilities/ability.gd
-res://game_logic/battle/battler.gd
 res://game_logic/battle/Abilities/attack/attack.tscn
+res://game_logic/battle/Abilities/attack/attack.res
+res://game_logic/battle/Abilities/ability.gd
+res://game_logic/battle/Abilities/attack/attack.gd
+res://game_logic/battle/battler_shader.tres
