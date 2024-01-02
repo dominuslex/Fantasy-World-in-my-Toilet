@@ -9,6 +9,7 @@ class_name Battler
 @onready var audio_stream : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var hp_progress_bar : TextureProgressBar = $HPTextureProgressBar
 var fade : float
+var is_monster : bool
 
 func _ready():
 	stats.current_hp = stats.hp
@@ -82,4 +83,5 @@ func _on_button_pressed():
 
 func _on_area_2d_mouse_entered():
 	print(self.name)
+	
 	pass # Replace with function body.

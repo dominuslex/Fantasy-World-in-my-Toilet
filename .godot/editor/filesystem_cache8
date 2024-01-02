@@ -1,5 +1,5 @@
 cffcf7cc5eb03ca20a5c49cce30ef619
-::res://::1704070093
+::res://::1704177432
 ::res://addons/::1697325169
 ::res://addons/AsepriteWizard/::1695979315
 plugin.cfg::TextFile::-1::1695979315::0::1::::<><>::
@@ -156,8 +156,14 @@ _sprite_with_animation_player.gd::GDScript::-1::1695979956::0::1::::<><>::
 grid_based.gd::GDScript::-1::1695979956::0::1::::<><>::
 packed.gd::GDScript::-1::1695979956::0::1::::<><>::
 _.gd::GDScript::-1::1695979956::0::1::::<>RefCounted<>::
-::res://audio/::1703290542
-::res://audio/sfx/::1704084041
+::res://audio/::1704157276
+::res://audio/bgm/::1704157706
+Zeeboo_Battle.mp3::AudioStreamMP3::3534958985022257456::1686478483::1704157706::1::::<><>::
+Zeeboo_Battle.ogg::AudioStreamOggVorbis::7372950674345370662::1686478994::1704157309::1::::<><>::
+Zeeboo_Forest.mp3::AudioStreamMP3::5463161678392029492::1685048405::1704157309::1::::<><>::
+Zeeboo_Forest.ogg::AudioStreamOggVorbis::6360007348116352467::1685050290::1704157309::1::::<><>::
+Zeeboo_Forest_-_SF_Version.ogg::AudioStreamOggVorbis::5981347429357853863::1686871243::1704157309::1::::<><>::
+::res://audio/sfx/::1704084048
 death_test.wav::AudioStreamWAV::1999044885990818522::1704084041::1704084048::1::::<><>::
 footstep grass light step.wav::AudioStreamWAV::5109809916271374708::1703391106::1703391107::1::::<><>::
 hit_01.wav::AudioStreamWAV::1523543441422851499::1703387990::1703388029::1::::<><>::
@@ -169,8 +175,9 @@ command_movement.gd::GDScript::-1::1698360590::0::1::::MovementCommand<>Command<
 controller.gd::GDScript::-1::1698360631::0::1::::Controller<>Node<>::
 ::res://characters/heroes/::1702941479
 ::res://characters/heroes/luke/::1703061329
-::res://characters/heroes/luke/battler/::1704083537
-battler_luke.tscn::PackedScene::1205802222601461159::1704083537::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn
+::res://characters/heroes/luke/battler/::1704180199
+battler_luke.tscn::PackedScene::1205802222601461159::1704179309::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn
+icon_luke_face.aseprite::CompressedTexture2D::856377570961628778::1704180199::1704180335::1::::<><>::
 ::res://characters/heroes/luke/battler/attack/::1703061330
 luke attack with sheath real_1.png::CompressedTexture2D::919320252012094205::1672344887::1703061330::1::::<><>::
 luke attack with sheath real_2.png::CompressedTexture2D::4226487676663319564::1672344887::1703061330::1::::<><>::
@@ -191,8 +198,9 @@ lukeidlenew6.png::CompressedTexture2D::3619996519223417447::1672344887::17030613
 lukeidlenew7.png::CompressedTexture2D::1581203804757095896::1672344886::1703061330::1::::<><>::
 lukeidlenew8.png::CompressedTexture2D::7902720368557163978::1672344887::1703061330::1::::<><>::
 ::res://characters/heroes/xander/::1703306186
-::res://characters/heroes/xander/battler/::1704083537
-battler_xander.tscn::PackedScene::1629579365710661296::1704083537::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn<>uid://jntswxwr0la::::res://characters/heroes/xander/battler/attack/xander_1.png<>uid://ca5yxo2m6xdqt::::res://characters/heroes/xander/battler/attack/xander_2.png<>uid://dgi1e2po5js0::::res://characters/heroes/xander/battler/attack/xander_3.png<>uid://dqelly0cd3t33::::res://characters/heroes/xander/battler/attack/xander_4.png<>uid://ces3j53bse032::::res://characters/heroes/xander/battler/attack/xander_5.png<>uid://tq5igux2mrtf::::res://characters/heroes/xander/battler/attack/xander_6.png<>uid://bwbsr144g43lg::::res://characters/heroes/xander/battler/attack/xander_7.png<>uid://djbm7wl8iylnk::::res://characters/heroes/xander/battler/idle/xander_8.png<>uid://beo1f1iypp5fd::::res://characters/heroes/xander/battler/idle/xander_9.png<>uid://cev33wl2ab16i::::res://characters/heroes/xander/battler/idle/xander_10.png<>uid://c3stf5jvb2uvw::::res://characters/heroes/xander/battler/idle/xander_11.png<>uid://cxiulm3m60id5::::res://characters/heroes/xander/battler/idle/xander_12.png
+::res://characters/heroes/xander/battler/::1704180330
+battler_xander.tscn::PackedScene::1629579365710661296::1704179309::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn<>uid://jntswxwr0la::::res://characters/heroes/xander/battler/attack/xander_1.png<>uid://ca5yxo2m6xdqt::::res://characters/heroes/xander/battler/attack/xander_2.png<>uid://dgi1e2po5js0::::res://characters/heroes/xander/battler/attack/xander_3.png<>uid://dqelly0cd3t33::::res://characters/heroes/xander/battler/attack/xander_4.png<>uid://ces3j53bse032::::res://characters/heroes/xander/battler/attack/xander_5.png<>uid://tq5igux2mrtf::::res://characters/heroes/xander/battler/attack/xander_6.png<>uid://bwbsr144g43lg::::res://characters/heroes/xander/battler/attack/xander_7.png<>uid://djbm7wl8iylnk::::res://characters/heroes/xander/battler/idle/xander_8.png<>uid://beo1f1iypp5fd::::res://characters/heroes/xander/battler/idle/xander_9.png<>uid://cev33wl2ab16i::::res://characters/heroes/xander/battler/idle/xander_10.png<>uid://c3stf5jvb2uvw::::res://characters/heroes/xander/battler/idle/xander_11.png<>uid://cxiulm3m60id5::::res://characters/heroes/xander/battler/idle/xander_12.png
+icon_xander_face.aseprite::CompressedTexture2D::6735853988639624098::1704180330::1704180335::1::::<><>::
 ::res://characters/heroes/xander/battler/attack/::1703385421
 xander_1.png::CompressedTexture2D::19403631257806370::1672344892::1703385421::1::::<><>::
 xander_2.png::CompressedTexture2D::4836271758718383911::1672344892::1703385421::1::::<><>::
@@ -222,11 +230,11 @@ Stalagmight.png::CompressedTexture2D::9037363967721997230::1697325495::170305676
 Stalagtight.aseprite::CompressedTexture2D::7295229631828896790::1697325495::1703056761::1::::<><>::
 Stalagtight.png::CompressedTexture2D::5199838709979332917::1697325495::1703056760::1::::<><>::
 ::res://characters/monsters/zeeboo_forest/::1697840558
-::res://characters/monsters/zeeboo_forest/acorn_twins/::1704083537
+::res://characters/monsters/zeeboo_forest/acorn_twins/::1704179309
 Acorn_Twins.aseprite::CompressedTexture2D::2845898426962180546::1697325495::1703056761::1::::<><>::
 acorn_twins_stats.tres::Resource/Resource::3335906619799419390::1703026565::0::1::::<><>::uid://b6po3lrsg56wy::::res://game_logic/battle/stat curves/stat_99_weak.tres<>res://battle/monsters/stats.gd<>uid://duyvc82ihd6nr::::res://game_logic/battle/stat curves/stat_99_beefy.tres<>uid://dfj6wudxaxh2g::::res://game_logic/battle/stat curves/stat_999_weak.tres
 acorn_twins_texture.png::CompressedTexture2D::1695531064753717841::1676877369::1703056760::1::::<><>::
-battler_acorn_twins.tscn::PackedScene::5077032423824406394::1704083537::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn<>uid://yflfcfahprg0::::res://characters/monsters/zeeboo_forest/acorn_twins/acorn_twins_texture.png<>uid://c3lcyfacaq8km::::res://game_logic/battle/stat curves/default_stat_99_curve.tres<>uid://ks0i427nait6::::res://game_logic/battle/stat curves/default_stat_999_curve.tres<>res://characters/monsters/stats.gd<>uid://kiybmuht6dsu::::res://game_logic/battle/battler_shader.tres
+battler_acorn_twins.tscn::PackedScene::5077032423824406394::1704179309::0::1::::<><>::uid://dmbc8623lhyxo::::res://game_logic/battle/battler.tscn<>uid://yflfcfahprg0::::res://characters/monsters/zeeboo_forest/acorn_twins/acorn_twins_texture.png<>uid://c3lcyfacaq8km::::res://game_logic/battle/stat curves/default_stat_99_curve.tres<>uid://ks0i427nait6::::res://game_logic/battle/stat curves/default_stat_999_curve.tres<>res://characters/monsters/stats.gd<>uid://kiybmuht6dsu::::res://game_logic/battle/battler_shader.tres
 ::res://characters/monsters/zeeboo_forest/guardian/::1703056760
 fat guardain .png::CompressedTexture2D::1946158030084383828::1684423126::1703056760::1::::<><>::
 fat guardain idle_1.png::CompressedTexture2D::1634351381797740397::1672265127::1703056760::1::::<><>::
@@ -242,25 +250,25 @@ Tree_Hugger.png::CompressedTexture2D::1019979945542736816::1697325495::170305676
 ::res://docs/::1703307118
 LICENSE.md::TextFile::-1::1696808629::0::1::::<><>::
 README.md::TextFile::-1::1696808629::0::1::::<><>::
-::res://game_logic/::1704083537
+::res://game_logic/::1704179309
 game.gd::GDScript::-1::1696653120::0::1::::<>Node<>::
-game.tscn::PackedScene::6829453006783131494::1704083537::0::1::::<><>::res://game_logic/game.gd<>uid://cwiblcmc7f4ck::::res://gui/main_menu.tscn<>uid://bchcmes5rwdby::::res://levels/game_world.tscn<>uid://y16p6nq70wag::::res://levels/forest/forest.tscn
-::res://game_logic/battle/::1704083537
+game.tscn::PackedScene::6829453006783131494::1704179309::0::1::::<><>::res://game_logic/game.gd<>uid://cwiblcmc7f4ck::::res://gui/main_menu.tscn<>uid://bchcmes5rwdby::::res://levels/game_world.tscn<>uid://y16p6nq70wag::::res://levels/forest/forest.tscn
+::res://game_logic/battle/::1704179856
 battle.tscn::PackedScene::1905516112600749297::1703056760::0::1::::<><>::uid://osc6kkqya8fc::::res://characters/monsters/zeeboo_forest/tree_hugger/Tree_Hugger.png
-battler.gd::GDScript::-1::1704083536::0::1::::Battler<>Node2D<>::
-battler.tscn::PackedScene::8003774588894914980::1704083537::0::1::::<><>::res://game_logic/battle/battler.gd<>uid://c3lcyfacaq8km::::res://game_logic/battle/stat curves/default_stat_99_curve.tres<>uid://ks0i427nait6::::res://game_logic/battle/stat curves/default_stat_999_curve.tres<>res://characters/monsters/stats.gd<>uid://kiybmuht6dsu::::res://game_logic/battle/battler_shader.tres<>uid://cv551n5ylvx00::::res://game_logic/battle/Abilities/attack/attack.tscn<>uid://ndlcngtixf7r::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_1.png<>uid://b1hlvtr3yxyum::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_2.png<>uid://b1py18t12qpng::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_3.png<>uid://sllgwslapt41::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_4.png<>uid://bvy0fayqbthug::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_5.png<>uid://dgichw11oaur2::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_6.png<>uid://n6vq6vbr1ytp::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_7.png<>uid://di0fec30cklrw::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_8.png<>uid://gl3ashr5q3u7::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_9.png<>uid://l624pmirmvgf::::res://characters/heroes/luke/battler/idle/lukeidlenew1.png<>uid://bvwqlx31le68f::::res://characters/heroes/luke/battler/idle/lukeidlenew2.png<>uid://bn867vejcio6c::::res://characters/heroes/luke/battler/idle/lukeidlenew3.png<>uid://bq65nmmke00vt::::res://characters/heroes/luke/battler/idle/lukeidlenew4.png<>uid://bbc2yjm0r50u2::::res://characters/heroes/luke/battler/idle/lukeidlenew5.png<>uid://brts2wy7glhl4::::res://characters/heroes/luke/battler/idle/lukeidlenew6.png<>uid://wr7gwfy54e7a::::res://characters/heroes/luke/battler/idle/lukeidlenew7.png<>uid://dkuewdiolcg23::::res://characters/heroes/luke/battler/idle/lukeidlenew8.png<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>uid://dw05luslbjn3c::::res://game_logic/battle/Abilities/attack/attack.res<>uid://i2pguwm0p50a::::res://gui/white_circle.aseprite
+battler.gd::GDScript::-1::1704175222::0::1::::Battler<>Node2D<>::
+battler.tscn::PackedScene::8003774588894914980::1704179309::0::1::::<><>::res://game_logic/battle/battler.gd<>uid://c3lcyfacaq8km::::res://game_logic/battle/stat curves/default_stat_99_curve.tres<>uid://ks0i427nait6::::res://game_logic/battle/stat curves/default_stat_999_curve.tres<>res://characters/monsters/stats.gd<>uid://kiybmuht6dsu::::res://game_logic/battle/battler_shader.tres<>uid://cv551n5ylvx00::::res://game_logic/battle/Abilities/attack/attack.tscn<>uid://ndlcngtixf7r::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_1.png<>uid://b1hlvtr3yxyum::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_2.png<>uid://b1py18t12qpng::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_3.png<>uid://sllgwslapt41::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_4.png<>uid://bvy0fayqbthug::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_5.png<>uid://dgichw11oaur2::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_6.png<>uid://n6vq6vbr1ytp::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_7.png<>uid://di0fec30cklrw::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_8.png<>uid://gl3ashr5q3u7::::res://characters/heroes/luke/battler/attack/luke attack with sheath real_9.png<>uid://l624pmirmvgf::::res://characters/heroes/luke/battler/idle/lukeidlenew1.png<>uid://bvwqlx31le68f::::res://characters/heroes/luke/battler/idle/lukeidlenew2.png<>uid://bn867vejcio6c::::res://characters/heroes/luke/battler/idle/lukeidlenew3.png<>uid://bq65nmmke00vt::::res://characters/heroes/luke/battler/idle/lukeidlenew4.png<>uid://bbc2yjm0r50u2::::res://characters/heroes/luke/battler/idle/lukeidlenew5.png<>uid://brts2wy7glhl4::::res://characters/heroes/luke/battler/idle/lukeidlenew6.png<>uid://wr7gwfy54e7a::::res://characters/heroes/luke/battler/idle/lukeidlenew7.png<>uid://dkuewdiolcg23::::res://characters/heroes/luke/battler/idle/lukeidlenew8.png<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>uid://dw05luslbjn3c::::res://game_logic/battle/Abilities/attack/attack.res<>uid://i2pguwm0p50a::::res://gui/white_circle.aseprite<>uid://cqysquvrgxs3w::::res://gui/target_arrow.aseprite
+battler_shader.tres::VisualShader::719863113554053004::1704156049::0::1::::<><>::
 battler_stats.tres::Resource/Resource::1365563854051070144::1703026565::0::1::::<><>::uid://c3lcyfacaq8km::::res://game_logic/battle/stat curves/default_stat_99_curve.tres<>uid://ks0i427nait6::::res://game_logic/battle/stat curves/default_stat_999_curve.tres<>res://battle/monsters/stats.gd
-battle_scene.gd::GDScript::-1::1703068798::0::1::::<>Node2D<>::
-battle_scene.tscn::PackedScene::8525381077052631190::1704083537::0::1::::<><>::res://game_logic/battle/battle_scene.gd<>uid://rgdneyq12il0::::res://characters/heroes/luke/battler/battler_luke.tscn<>uid://cell8nqu7f4vu::::res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn<>uid://blubld1uq2bfi::::res://levels/bg_grass_plains.png<>uid://xhm601vw1nbk::::res://characters/heroes/xander/battler/battler_xander.tscn<>uid://dw05luslbjn3c::::res://game_logic/battle/Abilities/attack/attack.res
+battle_scene.gd::GDScript::-1::1704175166::0::1::::<>Node2D<>::
+battle_scene.tscn::PackedScene::8525381077052631190::1704179856::0::1::::<><>::res://game_logic/battle/battle_scene.gd<>uid://rgdneyq12il0::::res://characters/heroes/luke/battler/battler_luke.tscn<>uid://bqmmi1jgsmce7::::res://audio/bgm/Zeeboo_Battle.mp3<>uid://cell8nqu7f4vu::::res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn<>uid://blubld1uq2bfi::::res://levels/bg_grass_plains.png<>uid://xhm601vw1nbk::::res://characters/heroes/xander/battler/battler_xander.tscn<>uid://dw05luslbjn3c::::res://game_logic/battle/Abilities/attack/attack.res<>uid://bfjbv0cyc6w3g::::res://gui/battle/hero_stat_ui.tscn
 Button.gd::GDScript::-1::1703913337::0::1::::<>Button<>::
-battler_shader.tres::VisualShader::719863113554053004::1704081943::0::1::::<><>::
 status_effect.gd::GDScript::-1::1702123351::0::1::::StatusEffect<>Resource<>::
 ::res://game_logic/battle/Abilities/::1704078693
 ability.gd::GDScript::-1::1704078693::0::1::::Ability<>Node2D<>::
-::res://game_logic/battle/Abilities/attack/::1704083537
+::res://game_logic/battle/Abilities/attack/::1704179309
 attack.gd::GDScript::-1::1704079580::0::1::::<>Ability<>::
 attack.res::Animation::8756868287258435878::1704079225::0::1::::<><>::uid://c2rddn48yd73e::::res://audio/sfx/spatula hit 26.wav
-attack.tscn::PackedScene::6310607087084883743::1704083537::0::1::::<><>::res://game_logic/battle/Abilities/attack/attack.gd<>uid://ce2h28edb57pw::::res://audio/sfx/footstep grass light step.wav<>uid://c2rddn48yd73e::::res://audio/sfx/spatula hit 26.wav
+attack.tscn::PackedScene::6310607087084883743::1704179309::0::1::::<><>::res://game_logic/battle/Abilities/attack/attack.gd<>uid://ce2h28edb57pw::::res://audio/sfx/footstep grass light step.wav<>uid://c2rddn48yd73e::::res://audio/sfx/spatula hit 26.wav
 ::res://game_logic/battle/stat curves/::1702122627
 default_stat_99_curve.tres::Curve::6761001700293305764::1697855921::0::1::::<><>::
 default_stat_999_curve.tres::Curve::740581013481989845::1697855914::0::1::::<><>::
@@ -273,26 +281,31 @@ stat_999_weak.tres::Curve::7530708239445015056::1698273756::0::1::::<><>::
 ::res://game_logic/components/::1696821220
 GridMovementComponent.gd::GDScript::-1::1696821220::0::1::::<>Node2D<>::
 ::res://game_logic/map/::1703056380
-::res://game_logic/map/map_characters/::1704083537
+::res://game_logic/map/map_characters/::1704176271
 animate_state.gd::GDScript::-1::1697331023::0::1::::<>AnimatedSprite2D<>::
 character.gd::GDScript::-1::1703059767::0::1::::Character<>CharacterBody2D<>::
-character.tscn::PackedScene::7517200221782995229::1704083537::0::1::::<><>::res://game_logic/map/map_characters/character.gd<>uid://di3icw6uk1go8::::res://characters/heroes/xander/mapsprite/xander.tscn<>res://game_logic/map/map_characters/animate_state.gd<>uid://ciniy1gfbixfj::::res://game_logic/map/map_characters/shadow.png<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>res://addons/godot_state_charts/transition.gd
+character.tscn::PackedScene::7517200221782995229::1704176271::0::1::::<><>::res://game_logic/map/map_characters/character.gd<>uid://di3icw6uk1go8::::res://characters/heroes/xander/mapsprite/xander.tscn<>res://game_logic/map/map_characters/animate_state.gd<>uid://ciniy1gfbixfj::::res://game_logic/map/map_characters/shadow.png<>res://addons/godot_state_charts/state_chart.gd<>res://addons/godot_state_charts/compound_state.gd<>res://addons/godot_state_charts/atomic_state.gd<>res://addons/godot_state_charts/transition.gd
 shadow.png::CompressedTexture2D::5361718997393872383::1696843921::1703056418::1::::<><>::
 ::res://game_logic/map/npc_ai/::1703056357
-::res://game_logic/map/player_controller/::1704083537
+::res://game_logic/map/player_controller/::1704176271
 player.gd::GDScript::-1::1703056118::0::1::::<>Node2D<>::
-player.tscn::PackedScene::7620168264118921158::1704083537::0::1::::<><>::res://game_logic/map/player_controller/player.gd<>uid://dfdngo6ib8bq8::::res://game_logic/map/map_characters/character.tscn<>res://game_logic/map/player_controller/player_camera.gd
+player.tscn::PackedScene::7620168264118921158::1704176271::0::1::::<><>::res://game_logic/map/player_controller/player.gd<>uid://dfdngo6ib8bq8::::res://game_logic/map/map_characters/character.tscn<>res://game_logic/map/player_controller/player_camera.gd
 player_camera.gd::GDScript::-1::1697330010::0::1::::<>Camera2D<>::
-::res://gui/::1704066717
+::res://gui/::1704179820
 loading_screen.gd::GDScript::-1::1696653123::0::1::::<>Control<>::
 loading_screen.tscn::PackedScene::1498299788586500317::1702805868::0::1::::<><>::res://gui/loading_screen.gd
 main_menu.gd::GDScript::-1::1695971969::0::1::::<>Control<>::
 main_menu.tscn::PackedScene::6333591433899330090::1702805868::0::1::::<><>::res://gui/main_menu.gd<>uid://cv48ryj52ert0::::res://levels/map.tscn<>uid://vl11qcvqyx6d::::res://gui/loading_screen.tscn
+progressbar.aseprite::CompressedTexture2D::4220080170604150230::1704179819::1704179820::1::::<><>::
+progressbar_overlay.aseprite::CompressedTexture2D::665912780825541329::1704179800::1704179820::1::::<><>::
+target_arrow.aseprite::CompressedTexture2D::5946530493953671182::1704173761::1704173765::1::::<><>::
 white_circle.aseprite::CompressedTexture2D::618171503150757970::1704066713::1704066717::1::::<><>::
-white_square.aseprite::CompressedTexture2D::2168433187241149025::1704066656::1704066717::1::::<><>::
-::res://levels/::1704083537
-bg_grass_plains.png::CompressedTexture2D::3199866078184490766::1703909377::1703913307::1::::<><>::
-game_world.tscn::PackedScene::2541392118046504646::1704083537::0::1::::<><>::uid://y16p6nq70wag::::res://levels/forest/forest.tscn<>uid://dgtjb8bhqryne::::res://game_logic/map/player_controller/player.tscn
+white_square.aseprite::CompressedTexture2D::2168433187241149025::1704179762::1704179778::1::::<><>::
+::res://gui/battle/::1704179869
+hero_stat_ui.tscn::PackedScene::2756043837602300334::1704179869::0::1::::<><>::uid://b1eidsbwnbuqo::::res://gui/progressbar.aseprite<>uid://jqtqsb70uo6l::::res://gui/progressbar_overlay.aseprite
+::res://levels/::1704179309
+bg_grass_plains.png::CompressedTexture2D::3199866078184490766::1704177551::1704177552::1::::<><>::
+game_world.tscn::PackedScene::2541392118046504646::1704179309::0::1::::<><>::uid://y16p6nq70wag::::res://levels/forest/forest.tscn<>uid://dgtjb8bhqryne::::res://game_logic/map/player_controller/player.tscn
 map.tscn::PackedScene::6308709333773256755::1696652355::0::1::::<><>::
 ::res://levels/forest/::1702805868
 forest.tscn::PackedScene::1740116731679714662::1702805868::0::1::::<><>::uid://cv48ryj52ert0::::res://levels/map.tscn<>uid://768j71rsvmv8::::res://levels/tilesets/outside/tileset_outside.tres
@@ -329,7 +342,7 @@ bg24.png::CompressedTexture2D::4914435616856299041::1595986952::1703387138::1:::
 ::res://levels/tilesets/::1696636475
 ::res://levels/tilesets/dungeon/::1696639918
 dungeon_floor.aseprite::CompressedTexture2D::6637529173064621567::1696639861::1696639918::1::::<><>::
-::res://levels/tilesets/outside/::1704065530
+::res://levels/tilesets/outside/::1704156049
 base_brick.ase::CompressedTexture2D::5515629468755882769::1696641661::1696641806::1::::<><>::
 base_dirt.ase::CompressedTexture2D::6405448842047700236::1696640827::1696641806::1::::<><>::
 base_sand.ase::CompressedTexture2D::9008866657929629761::1696649915::1696649959::1::::<><>::
@@ -343,4 +356,4 @@ outside_ground_grass.ase::CompressedTexture2D::6277850353671753566::1696810837::
 outside_ground_grass.png::CompressedTexture2D::7607760499807059921::1696810837::1696810840::1::::<><>::
 outside_walls.aseprite::CompressedTexture2D::4114962971957777192::1696665618::1696665638::1::::<><>::
 outside_walls.png::CompressedTexture2D::7337490520165603375::1696665627::1696665637::1::::<><>::
-tileset_outside.tres::TileSet::2312060161408742403::1704065530::0::1::::<><>::uid://cynt15wah5wf0::::res://levels/tilesets/outside/outside_groundcover.png<>uid://dgnix60becosf::::res://levels/tilesets/outside/outside_ground_grass.png<>uid://dcslnq0wcaaap::::res://levels/tilesets/outside/outside_walls.png
+tileset_outside.tres::TileSet::2312060161408742403::1704156049::0::1::::<><>::uid://cynt15wah5wf0::::res://levels/tilesets/outside/outside_groundcover.png<>uid://dgnix60becosf::::res://levels/tilesets/outside/outside_ground_grass.png<>uid://dcslnq0wcaaap::::res://levels/tilesets/outside/outside_walls.png

@@ -85,3 +85,7 @@ offset_top = 47.0
 offset_right = 237.0
 offset_bottom = 175.0
 scale = Vector2(-0.3, 0.3)
+
+[node name="curser" parent="." index="7"]
+position = Vector2(3, -60)
+rotation = 1.5708

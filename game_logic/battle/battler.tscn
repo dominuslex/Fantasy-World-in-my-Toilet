@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dmbc8623lhyxo"]
+[gd_scene load_steps=40 format=3 uid="uid://dmbc8623lhyxo"]
 
 [ext_resource type="Script" path="res://game_logic/battle/battler.gd" id="1_nwsdr"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="24_6rim3"]
 [ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="26_al4r1"]
 [ext_resource type="Texture2D" uid="uid://i2pguwm0p50a" path="res://gui/white_circle.aseprite" id="27_v8ek6"]
+[ext_resource type="Texture2D" uid="uid://cqysquvrgxs3w" path="res://gui/target_arrow.aseprite" id="29_m24sc"]
 
 [sub_resource type="Resource" id="Resource_6eync"]
 script = ExtResource("4_l1sl7")
@@ -122,6 +123,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_sydk7"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0699761),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_rmp5i"]
 resource_name = "hit"
 length = 0.5
@@ -141,27 +157,34 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_13d07"]
 resource_name = "test"
 
-[sub_resource type="Animation" id="Animation_sydk7"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0699761),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhdut"]
 _data = {
 "attack": ExtResource("26_al4r1"),
 "death": SubResource("Animation_sydk7"),
 "hit": SubResource("Animation_rmp5i"),
 "test": SubResource("Animation_13d07")
+}
+
+[sub_resource type="Animation" id="Animation_68ruq"]
+resource_name = "float"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gv8wy"]
+_data = {
+"float": SubResource("Animation_68ruq")
 }
 
 [node name="Battler" type="Node2D"]
@@ -231,6 +254,18 @@ value = 100.0
 fill_mode = 5
 texture_progress = ExtResource("27_v8ek6")
 tint_progress = Color(0.176471, 0.482353, 0, 1)
+
+[node name="curser" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-34, -59)
+rotation = 1.5708
+texture = ExtResource("29_m24sc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="curser"]
+libraries = {
+"": SubResource("AnimationLibrary_gv8wy")
+}
+autoplay = "float"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
