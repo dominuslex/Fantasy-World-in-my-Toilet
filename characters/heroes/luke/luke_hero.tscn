@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3euq3fwdrh55"]
+
+[ext_resource type="Script" path="res://Hero.gd" id="1_86y1v"]
+[ext_resource type="Texture2D" uid="uid://mg3ob8icr2tq" path="res://characters/heroes/luke/battler/icon_luke_face.aseprite" id="2_cypy3"]
+[ext_resource type="PackedScene" uid="uid://rgdneyq12il0" path="res://characters/heroes/luke/luke_battler.tscn" id="3_n3coj"]
+[ext_resource type="PackedScene" uid="uid://uq0f23pervy5" path="res://characters/heroes/luke/luke_character.tscn" id="4_1idgg"]
+
+[node name="Luke" type="Node"]
+script = ExtResource("1_86y1v")
+
+[node name="LukeIcon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cypy3")
+
+[node name="LukeBattler" parent="." instance=ExtResource("3_n3coj")]
+
+[node name="LukeCharacter" parent="." instance=ExtResource("4_1idgg")]
+visible = false

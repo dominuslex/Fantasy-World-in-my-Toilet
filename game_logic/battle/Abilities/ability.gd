@@ -2,14 +2,9 @@ extends Node2D
 
 class_name Ability
 
-var battle_animation_player : AnimationPlayer
 var targets
 	
-	
-func _ready():
-	var battle_scene = get_tree().root.get_node("BattleScene")
-	if battle_scene :
-		battle_animation_player = battle_scene.get_node("BattleAnimationPlayer")
+
 
 func use(user : Battler, target):
 	print(user.name, " v. ", target.name)
@@ -22,7 +17,7 @@ func run_to_target(user: Battler, target : Battler) -> bool:
 	tween.tween_property(
 		user.sprite, 
 		"global_position", 
-		target.sprite.global_position + Vector2(target.sprite.sprite_frames.get_frame_texture("idle",0).get_width(),-50), 
+		target.sprite.global_position + Vector2(target.sprite.sprite_frames.get_frame_texture("idle",0).get_width(),0), 
 		.5)
 	await tween.finished
 	return true

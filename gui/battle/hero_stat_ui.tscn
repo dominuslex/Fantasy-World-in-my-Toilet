@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfjbv0cyc6w3g"]
+[gd_scene load_steps=7 format=3 uid="uid://bfjbv0cyc6w3g"]
 
 [ext_resource type="Texture2D" uid="uid://mg3ob8icr2tq" path="res://characters/heroes/luke/battler/icon_luke_face.aseprite" id="1_4odpc"]
+[ext_resource type="Script" path="res://gui/battle/hero_stat_ui.gd" id="1_277bt"]
 [ext_resource type="Texture2D" uid="uid://b1eidsbwnbuqo" path="res://gui/progressbar.aseprite" id="1_xnyym"]
 [ext_resource type="Texture2D" uid="uid://jqtqsb70uo6l" path="res://gui/progressbar_overlay.aseprite" id="2_65r3x"]
 
@@ -14,6 +15,7 @@ bg_color = Color(0.886275, 0.886275, 0.886275, 1)
 [node name="HeroStatUI" type="VBoxContainer"]
 offset_right = 281.0
 offset_bottom = 95.0
+script = ExtResource("1_277bt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

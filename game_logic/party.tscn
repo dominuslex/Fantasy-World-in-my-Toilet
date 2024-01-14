@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwtuhdfuq86jg"]
+
+[ext_resource type="Script" path="res://game_logic/party.gd" id="1_27ngn"]
+[ext_resource type="PackedScene" uid="uid://biytyd6h1jgwt" path="res://characters/heroes/xander/xander_hero.tscn" id="2_b4bww"]
+[ext_resource type="PackedScene" uid="uid://d3euq3fwdrh55" path="res://characters/heroes/luke/luke_hero.tscn" id="3_pcukc"]
+[ext_resource type="PackedScene" uid="uid://dnlhoa6txge2n" path="res://game_logic/hero.tscn" id="4_v3a1a"]
+
+[node name="Party" type="Node"]
+script = ExtResource("1_27ngn")
+
+[node name="Team" type="Node" parent="."]
+
+[node name="Luke" parent="Team" instance=ExtResource("3_pcukc")]
+
+[node name="Hero" parent="Team" instance=ExtResource("4_v3a1a")]
+
+[node name="Xander" parent="Team" instance=ExtResource("2_b4bww")]
+
+[node name="Backup" type="Node" parent="."]
+
+[node name="NotInParty" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

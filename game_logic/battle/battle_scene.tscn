@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtp01stg1ewws"]
+[gd_scene load_steps=10 format=3 uid="uid://dtp01stg1ewws"]
 
 [ext_resource type="Script" path="res://game_logic/battle/battle_scene.gd" id="1_isa2j"]
-[ext_resource type="PackedScene" uid="uid://rgdneyq12il0" path="res://characters/heroes/luke/battler/battler_luke.tscn" id="2_2hqxe"]
 [ext_resource type="AudioStream" uid="uid://bqmmi1jgsmce7" path="res://audio/bgm/Zeeboo_Battle.mp3" id="2_s240r"]
 [ext_resource type="PackedScene" uid="uid://cell8nqu7f4vu" path="res://characters/monsters/zeeboo_forest/acorn_twins/battler_acorn_twins.tscn" id="3_n5qkm"]
 [ext_resource type="Texture2D" uid="uid://blubld1uq2bfi" path="res://levels/bg_grass_plains.png" id="3_nrp2k"]
-[ext_resource type="PackedScene" uid="uid://xhm601vw1nbk" path="res://characters/heroes/xander/battler/battler_xander.tscn" id="4_utxd1"]
 [ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="6_3tijb"]
 [ext_resource type="PackedScene" uid="uid://bfjbv0cyc6w3g" path="res://gui/battle/hero_stat_ui.tscn" id="8_5ysxd"]
 
@@ -27,8 +25,6 @@ script = ExtResource("1_isa2j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s240r")
-volume_db = -11.107
-autoplay = true
 
 [node name="BattleAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -47,16 +43,27 @@ position = Vector2(-372, -38)
 
 [node name="Heroes" type="Node2D" parent="."]
 
-[node name="LukeBattler" parent="Heroes" instance=ExtResource("2_2hqxe")]
-position = Vector2(336, -189)
+[node name="HerosOneFront" type="Node2D" parent="Heroes"]
 
-[node name="XanderBattler" parent="Heroes" instance=ExtResource("4_utxd1")]
-position = Vector2(517, -67)
+[node name="HeroMarker3" type="Marker2D" parent="Heroes/HerosOneFront"]
+position = Vector2(487, -25)
 
-[node name="XanderBattler2" parent="Heroes" instance=ExtResource("4_utxd1")]
-position = Vector2(298, 100)
+[node name="HeroMarker1" type="Marker2D" parent="Heroes/HerosOneFront"]
+position = Vector2(334, 65)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="HeroMarker2" type="Marker2D" parent="Heroes/HerosOneFront"]
+position = Vector2(487, 212)
+
+[node name="HerosTwoFront" type="Node2D" parent="Heroes"]
+
+[node name="HeroMarker1" type="Marker2D" parent="Heroes/HerosTwoFront"]
+position = Vector2(334, 0)
+
+[node name="HeroMarker3" type="Marker2D" parent="Heroes/HerosTwoFront"]
+position = Vector2(487, 116)
+
+[node name="HeroMarker2" type="Marker2D" parent="Heroes/HerosTwoFront"]
+position = Vector2(334, 256)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -66,16 +73,18 @@ offset_top = 115.0
 offset_right = -65.0
 offset_bottom = 532.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="HeroStats" type="VBoxContainer" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HeroStatUI" parent="Control/VBoxContainer" instance=ExtResource("8_5ysxd")]
+[node name="HeroStatUI" parent="Control/HeroStats" instance=ExtResource("8_5ysxd")]
 layout_mode = 2
 
-[node name="HeroStatUI2" parent="Control/VBoxContainer" instance=ExtResource("8_5ysxd")]
+[node name="HeroStatUI2" parent="Control/HeroStats" instance=ExtResource("8_5ysxd")]
 layout_mode = 2
 
-[node name="HeroStatUI3" parent="Control/VBoxContainer" instance=ExtResource("8_5ysxd")]
+[node name="HeroStatUI3" parent="Control/HeroStats" instance=ExtResource("8_5ysxd")]
 layout_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]

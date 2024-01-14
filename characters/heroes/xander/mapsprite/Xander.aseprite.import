@@ -3,12 +3,12 @@
 importer="Aseprite AnimatedSprite2D Import"
 type="PackedScene"
 uid="uid://efh2a7tpg8br"
-path="res://.godot/imported/Xander.aseprite-55e08a06c58a39dc8bffe32f3bc8caaa.scn"
+path="res://.godot/imported/xander.aseprite-7514ca447ace7db188424f20fc524653.scn"
 
 [deps]
 
-source_file="res://characters/heroes/xander/mapsprite/Xander.aseprite"
-dest_files=["res://.godot/imported/Xander.aseprite-55e08a06c58a39dc8bffe32f3bc8caaa.scn"]
+source_file="res://characters/heroes/xander/mapsprite/xander.aseprite"
+dest_files=["res://.godot/imported/xander.aseprite-7514ca447ace7db188424f20fc524653.scn"]
 
 [params]
 

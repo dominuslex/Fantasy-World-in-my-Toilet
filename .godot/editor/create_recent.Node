@@ -1,3 +1,10 @@
+Node2D
+Marker2D
+Button
+Node
+Sprite2D
+Character
+Battler
 VBoxContainer
 ProgressBar
 CenterContainer
@@ -5,10 +12,3 @@ HBoxContainer
 TextureProgressBar
 TextureRect
 MarginContainer
-Label
-ColorRect
-PanelContainer
-Container
-Control
-AnimationPlayer
-Sprite2D

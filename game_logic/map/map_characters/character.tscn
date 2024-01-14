@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfdngo6ib8bq8"]
 
 [ext_resource type="Script" path="res://game_logic/map/map_characters/character.gd" id="1_jajio"]
-[ext_resource type="PackedScene" uid="uid://di3icw6uk1go8" path="res://characters/heroes/xander/mapsprite/xander.tscn" id="2_lxnec"]
+[ext_resource type="SpriteFrames" uid="uid://4scre38okchw" path="res://characters/heroes/xander/mapsprite/xander_character_sprite.tres" id="2_d0l6e"]
 [ext_resource type="Script" path="res://game_logic/map/map_characters/animate_state.gd" id="3_7bv8m"]
 [ext_resource type="Texture2D" uid="uid://ciniy1gfbixfj" path="res://game_logic/map/map_characters/shadow.png" id="4_osqwy"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_0mh4b"]
@@ -20,10 +20,10 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_jajio")
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_lxnec")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(24, -6)
-frame = 3
-frame_progress = 0.142337
+sprite_frames = ExtResource("2_d0l6e")
+animation = &"walk_down"
 script = ExtResource("3_7bv8m")
 
 [node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]

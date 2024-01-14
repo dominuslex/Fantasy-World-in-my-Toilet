@@ -63,29 +63,28 @@ animations = [{
 scale = Vector2(-1, 1)
 stats = SubResource("Resource_yo30o")
 
-[node name="Button" parent="." index="0"]
-offset_left = 20.0
-offset_top = 72.0
-offset_right = 78.0
-offset_bottom = 103.0
-scale = Vector2(-1, 1)
-
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(41, -14)
-
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_rpk5w")
 position = Vector2(1, -1)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_nypwh")
+frame = 0
+frame_progress = 0.0
+offset = Vector2(0, -50)
 
-[node name="HPTextureProgressBar" parent="." index="6"]
-offset_left = 109.0
-offset_top = 47.0
-offset_right = 237.0
-offset_bottom = 175.0
+[node name="Button" parent="." index="1"]
+offset_left = 35.0
+offset_top = 20.0
+offset_right = 93.0
+offset_bottom = 51.0
+scale = Vector2(-1, 1)
+
+[node name="HPTextureProgressBar" parent="." index="2"]
+offset_left = 91.0
+offset_top = 14.0
+offset_right = 219.0
+offset_bottom = 142.0
 scale = Vector2(-0.3, 0.3)
 
-[node name="curser" parent="." index="7"]
+[node name="curser" parent="." index="6"]
 position = Vector2(3, -60)
-rotation = 1.5708

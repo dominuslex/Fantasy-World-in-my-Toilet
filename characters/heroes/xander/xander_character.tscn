@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dgd6xbabqmq"]
+
+[ext_resource type="PackedScene" uid="uid://dfdngo6ib8bq8" path="res://game_logic/map/map_characters/character.tscn" id="1_1mmkb"]
+[ext_resource type="SpriteFrames" uid="uid://4scre38okchw" path="res://characters/heroes/xander/mapsprite/xander_character_sprite.tres" id="2_fyp04"]
+
+[node name="Character" instance=ExtResource("1_1mmkb")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_fyp04")
+frame_progress = 0.0129008
