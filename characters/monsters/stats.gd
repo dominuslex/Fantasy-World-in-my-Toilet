@@ -9,6 +9,7 @@ var default_stat_999_curve : Curve = load("res://game_logic/battle/stat curves/d
 @export_range(1,99) var level: int = 1: set = _set_lvl_stats
 @export_range(10,12000) var hp : int = 10
 @export_range(0,999) var mp : int = 1
+var cp : int = 200
 @export_range(1,99) var strength : int = 1
 @export_range(1,99) var magic : int = 1
 @export_range(1,99) var spirit : int = 1
@@ -18,6 +19,7 @@ var default_stat_999_curve : Curve = load("res://game_logic/battle/stat curves/d
 
 var current_hp : int
 var current_mp : int
+var current_cp : int = 0
 var status_effects = []
 
 
@@ -61,3 +63,5 @@ func _set_lvl_stats (value) :
 		
 func get_experience_needed(level):
 	return round(pow(level + 1, 1.6) + level * 4)
+
+###### CREATE SIGNAL for HP change ######

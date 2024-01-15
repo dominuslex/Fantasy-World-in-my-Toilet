@@ -1,6 +1,8 @@
 extends Node2D
 class_name Battler
 
+@onready var icon : AnimatedSprite2D = $Icon
+
 @export var stats : Stats
 @onready var state_chart : StateChart = get_node("%StateChart")
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -10,6 +12,10 @@ class_name Battler
 @onready var hp_progress_bar : TextureProgressBar = $HPTextureProgressBar
 var fade : float
 var is_monster : bool
+
+
+signal hp_changed(old_hp : int, new_hp : int)
+signal hurt()
 
 func _ready():
 	stats.current_hp = stats.hp
@@ -21,6 +27,7 @@ func _process(_delta):
 
 func change_hp(amount : int) -> int:
 	# Prevent hp from going above max hp
+	var old_hp = stats.current_hp
 	if stats.current_hp + amount > stats.hp + 1 :
 		stats.current_hp = stats.hp
 	# Prevent hp from going below 0
@@ -33,6 +40,7 @@ func change_hp(amount : int) -> int:
 	#returning int just in case I want to get that information somewhere for some reason (like aborbing hp)
 	var tween = create_tween()
 	tween.tween_property(hp_progress_bar,"value", stats.current_hp, .4)
+	hp_changed.emit(old_hp, stats.current_hp)
 	return stats.current_hp
 		
 	
@@ -78,10 +86,12 @@ func battle_init():
 
 
 func _on_button_pressed():
-	use_ability($Abilities/Attack,self, find_parent("BattleScene").find_child("AcornTwinsBattler"))
+	use_ability($Abilities/Attack,self, self)
 
 
 func _on_area_2d_mouse_entered():
 	print(self.name)
 	
 	pass # Replace with function body.
+	
+

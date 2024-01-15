@@ -21,7 +21,8 @@ func use(user : Battler, targets):
 			apply_damage(user,target)
 			#if target.animation_player.get_animation("hit") :
 				#target.animation_player.play("hit")
-			await jump_to_start_position(user)
+			if (user != target):
+				await jump_to_start_position(user)
 		else:
 			await programatic_animation(user, target)
 		user.sprite.play("idle")
@@ -59,4 +60,5 @@ func programatic_animation(user, targets) -> bool:
 func play_hit_animation() :
 	for target : Battler in ability_targets :
 		target.animation_player.play("hit")
+		target.hurt.emit()
 	

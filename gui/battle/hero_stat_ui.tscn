@@ -20,26 +20,28 @@ script = ExtResource("1_277bt")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_4odpc")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="StatBarContainer" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatBarContainer"]
 layout_mode = 2
 
-[node name="HP" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HPLabel" type="Label" parent="HBoxContainer/StatBarContainer/HBoxContainer"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "HP"
 label_settings = SubResource("LabelSettings_dw738")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HPProgressBar" type="TextureProgressBar" parent="HBoxContainer/StatBarContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 47.0
@@ -49,17 +51,17 @@ texture_progress = ExtResource("1_xnyym")
 tint_under = Color(0.847059, 0, 0.101961, 1)
 tint_progress = Color(0.239216, 0.85098, 0, 1)
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatBarContainer"]
 layout_mode = 2
 
-[node name="MP" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="MPLabel" type="Label" parent="HBoxContainer/StatBarContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "MP
 "
 label_settings = SubResource("LabelSettings_dw738")
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="MPProgressBar" type="TextureProgressBar" parent="HBoxContainer/StatBarContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 68.0
@@ -68,16 +70,16 @@ texture_progress = ExtResource("1_xnyym")
 tint_under = Color(0.443137, 0.454902, 0.45098, 1)
 tint_progress = Color(0.309804, 0.760784, 1, 1)
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/StatBarContainer"]
 layout_mode = 2
 
-[node name="MP" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="CPLabel" type="Label" parent="HBoxContainer/StatBarContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 text = "CP"
 label_settings = SubResource("LabelSettings_dw738")
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="CPProgressBar" type="TextureProgressBar" parent="HBoxContainer/StatBarContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 4
 value = 68.0
@@ -87,6 +89,7 @@ tint_under = Color(0.443137, 0.454902, 0.45098, 1)
 tint_progress = Color(0.94902, 0.639216, 0, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_f50kf")
 value = 50.0

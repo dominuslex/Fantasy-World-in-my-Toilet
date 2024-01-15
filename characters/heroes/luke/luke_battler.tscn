@@ -1,12 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://rgdneyq12il0"]
+[gd_scene load_steps=8 format=3 uid="uid://rgdneyq12il0"]
 
 [ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://game_logic/battle/battler.tscn" id="1_53etj"]
+[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="2_0bsj6"]
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_54ehr"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_lywg2"]
+[ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_hc2ub"]
+
+[sub_resource type="Resource" id="Resource_da74y"]
+script = ExtResource("4_hc2ub")
+level = 1
+hp = 100
+mp = 1
+strength = 10
+magic = 1
+spirit = 1
+endurance = 8
+agility = 1
+luck = 1
+hp_curve = ExtResource("3_lywg2")
+mp_curve = ExtResource("3_lywg2")
+st_curve = ExtResource("2_54ehr")
+ma_curve = ExtResource("2_54ehr")
+sp_curve = ExtResource("2_54ehr")
+en_curve = ExtResource("2_54ehr")
+ag_curve = ExtResource("2_54ehr")
+lu_curve = ExtResource("2_54ehr")
+exp_needed_curve = ExtResource("3_lywg2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjifp"]
+shader = ExtResource("2_0bsj6")
+shader_parameter/fade = 1.0
 
 [node name="LukeBattler" instance=ExtResource("1_53etj")]
+stats = SubResource("Resource_da74y")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-frame = 0
-frame_progress = 0.0
+material = SubResource("ShaderMaterial_mjifp")
 
 [node name="Area2D" parent="AnimatedSprite2D" index="0"]
 position = Vector2(-42, -65)

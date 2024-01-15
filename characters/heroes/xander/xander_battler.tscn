@@ -1,0 +1,101 @@
+[gd_scene load_steps=21 format=3 uid="uid://xhm601vw1nbk"]
+
+[ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://game_logic/battle/battler.tscn" id="1_tan47"]
+[ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_42wyk"]
+[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="2_puxfs"]
+[ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_hgg4p"]
+[ext_resource type="Texture2D" uid="uid://jntswxwr0la" path="res://characters/heroes/xander/battler/attack/xander_1.png" id="3_yci7j"]
+[ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_krhd1"]
+[ext_resource type="Texture2D" uid="uid://ca5yxo2m6xdqt" path="res://characters/heroes/xander/battler/attack/xander_2.png" id="4_uk5le"]
+[ext_resource type="Texture2D" uid="uid://dgi1e2po5js0" path="res://characters/heroes/xander/battler/attack/xander_3.png" id="5_otssj"]
+[ext_resource type="Texture2D" uid="uid://dqelly0cd3t33" path="res://characters/heroes/xander/battler/attack/xander_4.png" id="6_1l4s5"]
+[ext_resource type="Texture2D" uid="uid://ces3j53bse032" path="res://characters/heroes/xander/battler/attack/xander_5.png" id="7_0y74i"]
+[ext_resource type="Texture2D" uid="uid://tq5igux2mrtf" path="res://characters/heroes/xander/battler/attack/xander_6.png" id="8_kq0gr"]
+[ext_resource type="Texture2D" uid="uid://bwbsr144g43lg" path="res://characters/heroes/xander/battler/attack/xander_7.png" id="9_me1fl"]
+[ext_resource type="Texture2D" uid="uid://djbm7wl8iylnk" path="res://characters/heroes/xander/battler/idle/xander_8.png" id="10_o5xa3"]
+[ext_resource type="Texture2D" uid="uid://beo1f1iypp5fd" path="res://characters/heroes/xander/battler/idle/xander_9.png" id="11_3nguv"]
+[ext_resource type="Texture2D" uid="uid://cev33wl2ab16i" path="res://characters/heroes/xander/battler/idle/xander_10.png" id="12_5sim8"]
+[ext_resource type="Texture2D" uid="uid://c3stf5jvb2uvw" path="res://characters/heroes/xander/battler/idle/xander_11.png" id="13_jcxtk"]
+[ext_resource type="Texture2D" uid="uid://cxiulm3m60id5" path="res://characters/heroes/xander/battler/idle/xander_12.png" id="14_phrwn"]
+
+[sub_resource type="Resource" id="Resource_tep0w"]
+script = ExtResource("4_krhd1")
+level = 1
+hp = 100
+mp = 1
+strength = 10
+magic = 1
+spirit = 1
+endurance = 8
+agility = 1
+luck = 1
+hp_curve = ExtResource("3_hgg4p")
+mp_curve = ExtResource("3_hgg4p")
+st_curve = ExtResource("2_42wyk")
+ma_curve = ExtResource("2_42wyk")
+sp_curve = ExtResource("2_42wyk")
+en_curve = ExtResource("2_42wyk")
+ag_curve = ExtResource("2_42wyk")
+lu_curve = ExtResource("2_42wyk")
+exp_needed_curve = ExtResource("3_hgg4p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w6im"]
+shader = ExtResource("2_puxfs")
+shader_parameter/fade = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vvnlg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yci7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uk5le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_otssj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1l4s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0y74i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kq0gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_me1fl")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_o5xa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3nguv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5sim8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jcxtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_phrwn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="XanderBattler" instance=ExtResource("1_tan47")]
+stats = SubResource("Resource_tep0w")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_4w6im")
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_vvnlg")

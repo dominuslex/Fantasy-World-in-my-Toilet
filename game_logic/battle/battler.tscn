@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dmbc8623lhyxo"]
+[gd_scene load_steps=46 format=3 uid="uid://dmbc8623lhyxo"]
 
 [ext_resource type="Script" path="res://game_logic/battle/battler.gd" id="1_nwsdr"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
@@ -29,6 +29,11 @@
 [ext_resource type="Animation" uid="uid://dw05luslbjn3c" path="res://game_logic/battle/Abilities/attack/attack.res" id="26_al4r1"]
 [ext_resource type="Texture2D" uid="uid://i2pguwm0p50a" path="res://gui/white_circle.aseprite" id="27_v8ek6"]
 [ext_resource type="Texture2D" uid="uid://cqysquvrgxs3w" path="res://gui/target_arrow.aseprite" id="29_m24sc"]
+[ext_resource type="Texture2D" uid="uid://bnyvtgtk18ur0" path="res://characters/heroes/luke/portraits/luke_portrait_confused.png" id="30_s0v1u"]
+[ext_resource type="Texture2D" uid="uid://by3q7tyc6wavx" path="res://characters/heroes/luke/portraits/luke_portrait_dead.png" id="31_xe335"]
+[ext_resource type="Texture2D" uid="uid://cwbl64ivxukda" path="res://characters/heroes/luke/portraits/luke_portrait_hurt.png" id="32_t3wlt"]
+[ext_resource type="Texture2D" uid="uid://c6il5efm5lqff" path="res://characters/heroes/luke/portraits/luke_portrait_normal.png" id="33_vug0i"]
+[ext_resource type="Texture2D" uid="uid://qdcowirs8uqq" path="res://characters/heroes/luke/portraits/luke_portrait_poisoned.png" id="34_nbcm5"]
 
 [sub_resource type="Resource" id="Resource_6eync"]
 script = ExtResource("4_l1sl7")
@@ -51,7 +56,7 @@ ag_curve = ExtResource("2_dwcub")
 lu_curve = ExtResource("2_dwcub")
 exp_needed_curve = ExtResource("3_w5i3q")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_78ikj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2dsli"]
 shader = ExtResource("5_3q2tc")
 shader_parameter/fade = 1.0
 
@@ -187,18 +192,59 @@ _data = {
 "float": SubResource("Animation_68ruq")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cmwma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_s0v1u")
+}],
+"loop": false,
+"name": &"confused",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_xe335")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_t3wlt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_vug0i")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_nbcm5")
+}],
+"loop": false,
+"name": &"poisoned",
+"speed": 5.0
+}]
+
 [node name="Battler" type="Node2D"]
 script = ExtResource("1_nwsdr")
 stats = SubResource("Resource_6eync")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_78ikj")
+material = SubResource("ShaderMaterial_2dsli")
 sprite_frames = SubResource("SpriteFrames_tlk5l")
 animation = &"attack"
 autoplay = "idle"
-frame = 8
-frame_progress = 1.0
 offset = Vector2(0, -111)
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
@@ -268,6 +314,11 @@ libraries = {
 "": SubResource("AnimationLibrary_gv8wy")
 }
 autoplay = "float"
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_cmwma")
+animation = &"normal"
 
 [connection signal="mouse_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

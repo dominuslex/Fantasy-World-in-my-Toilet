@@ -47,6 +47,3 @@ func swap_positions(first_hero_to_swap:Hero, second_hero_to_swap:Hero):
 	
 		
 
-
-func _on_button_pressed():
-	swap_positions($Backup/Hero,$Team/Xander)

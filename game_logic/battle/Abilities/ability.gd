@@ -11,15 +11,16 @@ func use(user : Battler, target):
 	pass
 	
 func run_to_target(user: Battler, target : Battler) -> bool:
-	user.audio_stream.stream = ResourceLoader.load("res://audio/sfx/footstep grass light step.wav")
-	user.audio_stream.play()
-	var tween = create_tween()
-	tween.tween_property(
-		user.sprite, 
-		"global_position", 
-		target.sprite.global_position + Vector2(target.sprite.sprite_frames.get_frame_texture("idle",0).get_width(),0), 
-		.5)
-	await tween.finished
+	if user != target:
+		user.audio_stream.stream = ResourceLoader.load("res://audio/sfx/footstep grass light step.wav")
+		user.audio_stream.play()
+		var tween = create_tween()
+		tween.tween_property(
+			user.sprite, 
+			"global_position", 
+			target.sprite.global_position + Vector2(target.sprite.sprite_frames.get_frame_texture("idle",0).get_width(),0), 
+			.5)
+		await tween.finished
 	return true
 		
 func jump_to_start_position(user: Battler, jump_height : float = 100, duration : float = .5) -> bool:

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Hero.gd" id="1_cpp17"]
 [ext_resource type="PackedScene" uid="uid://6dgd6xbabqmq" path="res://characters/heroes/xander/xander_character.tscn" id="2_7tt2s"]
-[ext_resource type="PackedScene" uid="uid://xhm601vw1nbk" path="res://characters/heroes/xander/battler_xander.tscn" id="3_lpgal"]
+[ext_resource type="PackedScene" uid="uid://xhm601vw1nbk" path="res://characters/heroes/xander/xander_battler.tscn" id="3_lpgal"]
 [ext_resource type="Texture2D" uid="uid://c275sb6jbuvfu" path="res://characters/heroes/xander/battler/icon_xander_face.aseprite" id="4_ab0lt"]
 
-[node name="Xander" type="Node"]
+[node name="Xander" type="Node2D"]
 script = ExtResource("1_cpp17")
 
 [node name="XanderCharacter" parent="." instance=ExtResource("2_7tt2s")]

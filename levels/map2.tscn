@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64mbmav64vde"]
+
+[sub_resource type="TileSet" id="TileSet_m4vc4"]
+
+[node name="Node2d" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_m4vc4")
+cell_quadrant_size = 48
+collision_visibility_mode = 1
+navigation_visibility_mode = 1
+format = 2
+layer_0/name = "ground_layer"
+
+[node name="Events" type="Node" parent="."]
+
+[node name="NPCs" type="Node" parent="Events"]
+
+[node name="Items" type="Node" parent="Events"]
+
+[node name="Exits" type="Node" parent="Events"]
+
+[node name="Bestiary" type="Node" parent="."]
