@@ -1,0 +1,185 @@
+[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://ytbgv5v4n54d"]
+
+[ext_resource type="Script" path="res://addons/shaderV/tools/sinTime.gd" id="1_boygj"]
+[ext_resource type="Script" path="res://addons/shaderV/rgba/glow/outerGlow.gd" id="2_ubwh0"]
+[ext_resource type="Script" path="res://addons/shaderV/rgba/noise/fractal/perlin4d_fractal.gd" id="3_qhc3q"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0w74g"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_u4fl2"]
+output_port_for_preview = 0
+default_input_values = [0, 8.0, 1, 1.0]
+initialized = true
+script = ExtResource("1_boygj")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_li65t"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_oytnb"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 0.2, 2, 1.0]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_h3tbs"]
+parameter_name = "is_selected"
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_nm6yj"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0nt33"]
+expanded_output_ports = [0]
+source = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_0feuv"]
+output_port_for_preview = 0
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_hcoaa"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0nfit"]
+output_port_for_preview = 0
+parameter_name = "fade"
+hint = 1
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_f64xv"]
+default_input_values = [2, -1.0, 3, 0.3, 4, 10.0, 5, Vector3(1, 1, 1), 6, 1.0]
+initialized = true
+script = ExtResource("2_ubwh0")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_v06hv"]
+default_input_values = [1, 6, 2, Vector3(2, 2, 0), 3, 2.0, 4, 0.8, 5, 0.5, 6, 0.6, 7, Vector3(0.5, 0.5, 0), 8, 0.0, 9, 0.0]
+initialized = true
+script = ExtResource("3_qhc3q")
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool is_selected;
+uniform float fade : hint_range(0, 1) = 1;
+
+
+// OuterGlow
+#include \"res://addons/shaderV/rgba/glow/outerGlow.gdshaderinc\"
+// FractalPerlinNoise4D
+#include \"res://addons/shaderV/rgba/noise/fractal/perlin4d_fractal.gdshaderinc\"
+
+void fragment() {
+// Input:2
+	vec2 n_out2p0 = UV;
+
+
+	float n_out19p0;
+// SinTIME:19
+	float n_in19p0 = 8.00000;
+	float n_in19p1 = 1.00000;
+	{
+		n_out19p0 = n_in19p1 * sin(n_in19p0 * TIME);
+	}
+
+
+// Clamp:21
+	float n_in21p1 = 0.20000;
+	float n_in21p2 = 1.00000;
+	float n_out21p0 = clamp(n_out19p0, n_in21p1, n_in21p2);
+
+
+	vec3 n_out8p0;
+	float n_out8p1;
+// OuterGlow:8
+	float n_in8p2 = -1.00000;
+	float n_in8p3 = 0.30000;
+	float n_in8p4 = 10.00000;
+	vec3 n_in8p5 = vec3(1.00000, 1.00000, 1.00000);
+	{
+		vec4 n_out8p0n_out8p1 = _outerGlowFunc(TEXTURE, vec3(n_out2p0, 0.0).xy, n_in8p2, n_in8p3, n_in8p4, vec4(n_in8p5, n_out21p0));
+		n_out8p0 = n_out8p0n_out8p1.rgb;
+		n_out8p1 = n_out8p0n_out8p1.a;
+	}
+
+
+// BooleanParameter:23
+	bool n_out23p0 = is_selected;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(TEXTURE, n_out2p0);
+	float n_out3p4 = n_out3p0.a;
+
+
+	float n_out9p0;
+// FractalPerlinNoise4D:9
+	int n_in9p1 = 6;
+	vec3 n_in9p2 = vec3(2.00000, 2.00000, 0.00000);
+	float n_in9p3 = 2.00000;
+	float n_in9p4 = 0.80000;
+	float n_in9p5 = 0.50000;
+	float n_in9p6 = 0.60000;
+	vec3 n_in9p7 = vec3(0.50000, 0.50000, 0.00000);
+	float n_in9p8 = 0.00000;
+	float n_in9p9 = 0.00000;
+	{
+		n_out9p0 = _perlinNoise4DFBM(vec3(n_out2p0, 0.0).xy, int(n_in9p1), n_in9p2.xy, n_in9p3, n_in9p4, n_in9p5, n_in9p6, n_in9p7.xy, n_in9p9, n_in9p8);
+	}
+
+
+// FloatParameter:7
+	float n_out7p0 = fade;
+
+
+// Step:6
+	float n_out6p0 = step(n_out9p0, n_out7p0);
+
+
+// VectorOp:5
+	vec2 n_out5p0 = vec2(n_out3p4) * vec2(n_out6p0);
+
+
+	float n_out24p0;
+// Switch:24
+	n_out24p0 = mix(n_out5p0.x, n_out8p1, float(n_out23p0));
+
+
+// Output:0
+	COLOR.rgb = n_out8p0;
+	COLOR.a = n_out24p0;
+
+
+}
+"
+graph_offset = Vector2(-526.398, -604.843)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1960, -100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_li65t")
+nodes/fragment/2/position = Vector2(200, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_0nt33")
+nodes/fragment/3/position = Vector2(840, 0)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_0feuv")
+nodes/fragment/5/position = Vector2(1140, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_hcoaa")
+nodes/fragment/6/position = Vector2(893.441, 432.066)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_0nfit")
+nodes/fragment/7/position = Vector2(540, 580)
+nodes/fragment/8/node = SubResource("VisualShaderNodeCustom_f64xv")
+nodes/fragment/8/position = Vector2(840, -660)
+nodes/fragment/9/node = SubResource("VisualShaderNodeCustom_v06hv")
+nodes/fragment/9/position = Vector2(580, 240)
+nodes/fragment/11/node = SubResource("VisualShaderNodeInput_0w74g")
+nodes/fragment/11/position = Vector2(240, -760)
+nodes/fragment/19/node = SubResource("VisualShaderNodeCustom_u4fl2")
+nodes/fragment/19/position = Vector2(-380, -620)
+nodes/fragment/21/node = SubResource("VisualShaderNodeClamp_oytnb")
+nodes/fragment/21/position = Vector2(20, -640)
+nodes/fragment/23/node = SubResource("VisualShaderNodeBooleanParameter_h3tbs")
+nodes/fragment/23/position = Vector2(800, -280)
+nodes/fragment/24/node = SubResource("VisualShaderNodeSwitch_nm6yj")
+nodes/fragment/24/position = Vector2(1520, -60)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 3, 4, 5, 0, 6, 0, 5, 1, 7, 0, 6, 1, 2, 0, 9, 0, 9, 0, 6, 0, 2, 0, 8, 1, 11, 0, 8, 0, 19, 0, 21, 0, 8, 0, 0, 0, 23, 0, 24, 0, 5, 0, 24, 2, 8, 1, 24, 1, 24, 0, 0, 1, 21, 0, 8, 6)

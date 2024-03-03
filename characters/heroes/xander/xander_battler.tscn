@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://game_logic/battle/battler.tscn" id="1_tan47"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_42wyk"]
-[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="2_puxfs"]
 [ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_hgg4p"]
 [ext_resource type="Texture2D" uid="uid://jntswxwr0la" path="res://characters/heroes/xander/battler/attack/xander_1.png" id="3_yci7j"]
 [ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_krhd1"]
 [ext_resource type="Texture2D" uid="uid://ca5yxo2m6xdqt" path="res://characters/heroes/xander/battler/attack/xander_2.png" id="4_uk5le"]
+[ext_resource type="Shader" uid="uid://ytbgv5v4n54d" path="res://characters/shaders/battler_shader_real.tres" id="5_ief16"]
 [ext_resource type="Texture2D" uid="uid://dgi1e2po5js0" path="res://characters/heroes/xander/battler/attack/xander_3.png" id="5_otssj"]
 [ext_resource type="Texture2D" uid="uid://dqelly0cd3t33" path="res://characters/heroes/xander/battler/attack/xander_4.png" id="6_1l4s5"]
 [ext_resource type="Texture2D" uid="uid://ces3j53bse032" path="res://characters/heroes/xander/battler/attack/xander_5.png" id="7_0y74i"]
@@ -40,8 +40,7 @@ lu_curve = ExtResource("2_42wyk")
 exp_needed_curve = ExtResource("3_hgg4p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4w6im"]
-shader = ExtResource("2_puxfs")
-shader_parameter/fade = 1.0
+shader = ExtResource("5_ief16")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvnlg"]
 animations = [{

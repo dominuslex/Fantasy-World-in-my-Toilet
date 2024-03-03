@@ -2,6 +2,7 @@ extends Node2D
 class_name Battler
 
 @onready var icon : AnimatedSprite2D = $Icon
+var battle_scene
 
 @export var stats : Stats
 @onready var state_chart : StateChart = get_node("%StateChart")
@@ -11,6 +12,7 @@ class_name Battler
 @onready var audio_stream : AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var hp_progress_bar : TextureProgressBar = $HPTextureProgressBar
 var fade : float
+var is_selected : bool
 var is_monster : bool
 
 
@@ -21,6 +23,8 @@ func _ready():
 	stats.current_hp = stats.hp
 	hp_progress_bar.max_value = stats.hp
 	hp_progress_bar.value = stats.current_hp
+	fade = 0
+	is_selected = false
 
 func _process(_delta):
 	pass
@@ -43,7 +47,11 @@ func change_hp(amount : int) -> int:
 	hp_changed.emit(old_hp, stats.current_hp)
 	return stats.current_hp
 		
-	
+
+func select_ability():
+	var ability : Ability
+	return ability
+
 func use_ability(ability : Ability, user : Battler = self, target = self):
 	if target is Battler:
 		state_chart.send_event("UseAbility")
@@ -56,12 +64,16 @@ func use_ability(ability : Ability, user : Battler = self, target = self):
 			
 func battler_death():
 	var tween = create_tween()
-	tween.tween_method(set_shader_value,1.0,0.0,1)
+	tween.tween_method(set_shader_fade_value,0.0,1.0,1)
 	audio_stream.stream = ResourceLoader.load("res://audio/sfx/death_test.wav")
 	audio_stream.play()
+	print("ALKIH")
 	pass
 
-func set_shader_value(value: float):
+func battler_selection():
+	sprite.material.set_shader_parameter("is_selected", true)
+
+func set_shader_fade_value(value: float):
 	sprite.material.set_shader_parameter("fade", value)
 	
 # Called when the node enters the scene tree for the first time.

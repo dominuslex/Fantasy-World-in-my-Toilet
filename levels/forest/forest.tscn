@@ -7,7 +7,6 @@
 
 [node name="TileMap" parent="." index="0"]
 tile_set = ExtResource("2_hsgo4")
-rendering_quadrant_size = 48
 collision_visibility_mode = 0
 navigation_visibility_mode = 0
 layer_0/name = "ground_1"

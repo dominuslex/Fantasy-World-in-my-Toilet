@@ -69,3 +69,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[editable path="Monsters/AcornTwinsBattler"]

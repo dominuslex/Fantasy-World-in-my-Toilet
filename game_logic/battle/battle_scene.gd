@@ -4,6 +4,7 @@ var party
 
 var monsters : Array
 var heroes : Array
+var selection : Array
 
 var team_formation
 var hero_stat_ui_array : Array

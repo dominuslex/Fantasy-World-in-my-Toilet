@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bchcmes5rwdby"]
+[gd_scene load_steps=3 format=3 uid="uid://bchcmes5rwdby"]
 
 [ext_resource type="PackedScene" uid="uid://y16p6nq70wag" path="res://levels/forest/forest.tscn" id="1_sfgm7"]
 [ext_resource type="PackedScene" uid="uid://dgtjb8bhqryne" path="res://game_logic/map/player_controller/player.tscn" id="2_j553c"]
-[ext_resource type="Texture2D" uid="uid://dgud1t3186jor" path="res://gui/Sprite-0001.aseprite" id="3_wisda"]
 
 [node name="GameWorld" type="Node2D"]
 
@@ -10,17 +9,5 @@
 
 [node name="Player" parent="." instance=ExtResource("2_j553c")]
 position = Vector2(278, 303)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(179, 185.5)
-texture = ExtResource("3_wisda")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(179, 410.5)
-texture = ExtResource("3_wisda")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(179, 303.5)
-texture = ExtResource("3_wisda")
 
 [editable path="Player"]

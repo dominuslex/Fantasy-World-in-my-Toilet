@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3euq3fwdrh55"]
+[gd_scene load_steps=6 format=3 uid="uid://d3euq3fwdrh55"]
 
 [ext_resource type="Script" path="res://Hero.gd" id="1_86y1v"]
 [ext_resource type="PackedScene" uid="uid://rgdneyq12il0" path="res://characters/heroes/luke/luke_battler.tscn" id="3_n3coj"]
+[ext_resource type="Shader" path="res://characters/shaders/outline.gdshader" id="3_t6rr8"]
 [ext_resource type="PackedScene" uid="uid://uq0f23pervy5" path="res://characters/heroes/luke/luke_character.tscn" id="4_1idgg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ec88c"]
+shader = ExtResource("3_t6rr8")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/fade = 1.0
 
 [node name="Luke" type="Node2D"]
 script = ExtResource("1_86y1v")
@@ -10,5 +17,11 @@ script = ExtResource("1_86y1v")
 [node name="LukeBattler" parent="." instance=ExtResource("3_n3coj")]
 visible = false
 
+[node name="AnimatedSprite2D" parent="LukeBattler" index="0"]
+material = SubResource("ShaderMaterial_ec88c")
+
 [node name="LukeCharacter" parent="." instance=ExtResource("4_1idgg")]
 visible = false
+
+[editable path="LukeBattler"]
+[editable path="LukeCharacter"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=46 format=3 uid="uid://dmbc8623lhyxo"]
+[gd_scene load_steps=62 format=3 uid="uid://dmbc8623lhyxo"]
 
 [ext_resource type="Script" path="res://game_logic/battle/battler.gd" id="1_nwsdr"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_dwcub"]
 [ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_w5i3q"]
 [ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_l1sl7"]
-[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="5_3q2tc"]
 [ext_resource type="PackedScene" uid="uid://cv551n5ylvx00" path="res://game_logic/battle/Abilities/attack/attack.tscn" id="5_3uham"]
+[ext_resource type="Script" path="res://addons/shaderV/tools/sinTime.gd" id="5_rq7bf"]
 [ext_resource type="Texture2D" uid="uid://ndlcngtixf7r" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_1.png" id="5_vxh0u"]
 [ext_resource type="Texture2D" uid="uid://b1hlvtr3yxyum" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_2.png" id="6_flt7j"]
+[ext_resource type="Script" path="res://addons/shaderV/rgba/glow/outerGlow.gd" id="6_qyv4d"]
 [ext_resource type="Texture2D" uid="uid://b1py18t12qpng" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_3.png" id="7_jrdge"]
+[ext_resource type="Script" path="res://addons/shaderV/rgba/noise/fractal/perlin4d_fractal.gd" id="7_w71km"]
 [ext_resource type="Texture2D" uid="uid://sllgwslapt41" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_4.png" id="8_yyxbs"]
 [ext_resource type="Texture2D" uid="uid://bvy0fayqbthug" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_5.png" id="9_8d7rq"]
 [ext_resource type="Texture2D" uid="uid://dgichw11oaur2" path="res://characters/heroes/luke/battler/attack/luke attack with sheath real_6.png" id="10_tlybv"]
@@ -56,8 +58,201 @@ ag_curve = ExtResource("2_dwcub")
 lu_curve = ExtResource("2_dwcub")
 exp_needed_curve = ExtResource("3_w5i3q")
 
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nt1f5"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_0opme"]
+output_port_for_preview = 0
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_05sgg"]
+output_port_for_preview = 0
+default_input_values = [0, 8.0, 1, 1.0]
+initialized = true
+script = ExtResource("5_rq7bf")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ieegu"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_cwv0d"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 0.2, 2, 1.0]
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_qjy17"]
+output_port_for_preview = 0
+default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_kukxo"]
+parameter_name = "is_flashing"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_bx5cw"]
+expanded_output_ports = [0]
+source = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_v1pnx"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_dsscc"]
+default_input_values = [0, 0.0, 1, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_woosd"]
+output_port_for_preview = 0
+parameter_name = "fade"
+hint = 1
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_vpdng"]
+default_input_values = [2, -1.0, 3, 0.3, 4, 10.0, 5, Vector3(1, 1, 1), 6, 1.0]
+initialized = true
+script = ExtResource("6_qyv4d")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_y47jd"]
+default_input_values = [1, 6, 2, Vector3(2, 2, 0), 3, 2.0, 4, 0.8, 5, 0.5, 6, 0.6, 7, Vector3(0.5, 0.5, 0), 8, 0.0, 9, 0.0]
+initialized = true
+script = ExtResource("7_w71km")
+
+[sub_resource type="VisualShader" id="VisualShader_t8sux"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool is_flashing = false;
+uniform float fade : hint_range(0, 1) = 0;
+
+
+// OuterGlow
+#include \"res://addons/shaderV/rgba/glow/outerGlow.gdshaderinc\"
+// FractalPerlinNoise4D
+#include \"res://addons/shaderV/rgba/noise/fractal/perlin4d_fractal.gdshaderinc\"
+
+void fragment() {
+// Input:2
+	vec2 n_out2p0 = UV;
+
+
+	float n_out19p0;
+// SinTIME:19
+	float n_in19p0 = 8.00000;
+	float n_in19p1 = 1.00000;
+	{
+		n_out19p0 = n_in19p1 * sin(n_in19p0 * TIME);
+	}
+
+
+// Clamp:21
+	float n_in21p1 = 0.20000;
+	float n_in21p2 = 1.00000;
+	float n_out21p0 = clamp(n_out19p0, n_in21p1, n_in21p2);
+
+
+	vec3 n_out8p0;
+	float n_out8p1;
+// OuterGlow:8
+	float n_in8p2 = -1.00000;
+	float n_in8p3 = 0.30000;
+	float n_in8p4 = 10.00000;
+	vec3 n_in8p5 = vec3(1.00000, 1.00000, 1.00000);
+	{
+		vec4 n_out8p0n_out8p1 = _outerGlowFunc(TEXTURE, vec3(n_out2p0, 0.0).xy, n_in8p2, n_in8p3, n_in8p4, vec4(n_in8p5, n_out21p0));
+		n_out8p0 = n_out8p0n_out8p1.rgb;
+		n_out8p1 = n_out8p0n_out8p1.a;
+	}
+
+
+// BooleanParameter:23
+	bool n_out23p0 = is_flashing;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(TEXTURE, n_out2p0);
+	float n_out3p4 = n_out3p0.a;
+
+
+	float n_out9p0;
+// FractalPerlinNoise4D:9
+	int n_in9p1 = 6;
+	vec3 n_in9p2 = vec3(2.00000, 2.00000, 0.00000);
+	float n_in9p3 = 2.00000;
+	float n_in9p4 = 0.80000;
+	float n_in9p5 = 0.50000;
+	float n_in9p6 = 0.60000;
+	vec3 n_in9p7 = vec3(0.50000, 0.50000, 0.00000);
+	float n_in9p8 = 0.00000;
+	float n_in9p9 = 0.00000;
+	{
+		n_out9p0 = _perlinNoise4DFBM(vec3(n_out2p0, 0.0).xy, int(n_in9p1), n_in9p2.xy, n_in9p3, n_in9p4, n_in9p5, n_in9p6, n_in9p7.xy, n_in9p9, n_in9p8);
+	}
+
+
+// FloatParameter:7
+	float n_out7p0 = fade;
+
+
+// Step:6
+	float n_out6p0 = step(n_out9p0, n_out7p0);
+
+
+// VectorOp:5
+	vec2 n_out5p0 = vec2(n_out3p4) * vec2(n_out6p0);
+
+
+// VectorOp:12
+	vec2 n_out12p0 = vec2(n_out8p1) - n_out5p0;
+
+
+	vec3 n_out22p0;
+// Switch:22
+	n_out22p0 = mix(vec3(n_out3p4), vec3(n_out12p0, 0.0), float(n_out23p0));
+
+
+// Output:0
+	COLOR.rgb = n_out8p0;
+	COLOR.a = n_out22p0.x;
+
+
+}
+"
+graph_offset = Vector2(-414.27, -336.817)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1960, -100)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ieegu")
+nodes/fragment/2/position = Vector2(200, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_bx5cw")
+nodes/fragment/3/position = Vector2(840, 0)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_v1pnx")
+nodes/fragment/5/position = Vector2(1140, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeStep_dsscc")
+nodes/fragment/6/position = Vector2(893.441, 432.066)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_woosd")
+nodes/fragment/7/position = Vector2(540, 580)
+nodes/fragment/8/node = SubResource("VisualShaderNodeCustom_vpdng")
+nodes/fragment/8/position = Vector2(860, -660)
+nodes/fragment/9/node = SubResource("VisualShaderNodeCustom_y47jd")
+nodes/fragment/9/position = Vector2(580, 200)
+nodes/fragment/11/node = SubResource("VisualShaderNodeInput_nt1f5")
+nodes/fragment/11/position = Vector2(240, -760)
+nodes/fragment/12/node = SubResource("VisualShaderNodeVectorOp_0opme")
+nodes/fragment/12/position = Vector2(1400, -20)
+nodes/fragment/19/node = SubResource("VisualShaderNodeCustom_05sgg")
+nodes/fragment/19/position = Vector2(0, -500)
+nodes/fragment/21/node = SubResource("VisualShaderNodeClamp_cwv0d")
+nodes/fragment/21/position = Vector2(340, -500)
+nodes/fragment/22/node = SubResource("VisualShaderNodeSwitch_qjy17")
+nodes/fragment/22/position = Vector2(1640, 40)
+nodes/fragment/23/node = SubResource("VisualShaderNodeBooleanParameter_kukxo")
+nodes/fragment/23/position = Vector2(1280, -220)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 3, 4, 5, 0, 6, 0, 5, 1, 7, 0, 6, 1, 2, 0, 9, 0, 9, 0, 6, 0, 2, 0, 8, 1, 11, 0, 8, 0, 5, 0, 12, 1, 19, 0, 21, 0, 21, 0, 8, 6, 8, 0, 0, 0, 8, 1, 12, 0, 22, 0, 0, 1, 3, 4, 22, 2, 12, 0, 22, 1, 23, 0, 22, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2dsli"]
-shader = ExtResource("5_3q2tc")
+shader = SubResource("VisualShader_t8sux")
+shader_parameter/is_flashing = true
 shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlk5l"]

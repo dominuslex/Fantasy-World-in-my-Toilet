@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://rgdneyq12il0"]
 
 [ext_resource type="PackedScene" uid="uid://dmbc8623lhyxo" path="res://game_logic/battle/battler.tscn" id="1_53etj"]
-[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="2_0bsj6"]
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_54ehr"]
 [ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_lywg2"]
 [ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_hc2ub"]
+[ext_resource type="Shader" path="res://characters/shaders/outline.gdshader" id="5_g5twf"]
 
 [sub_resource type="Resource" id="Resource_da74y"]
 script = ExtResource("4_hc2ub")
@@ -28,7 +28,9 @@ lu_curve = ExtResource("2_54ehr")
 exp_needed_curve = ExtResource("3_lywg2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjifp"]
-shader = ExtResource("2_0bsj6")
+shader = ExtResource("5_g5twf")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 shader_parameter/fade = 1.0
 
 [node name="LukeBattler" instance=ExtResource("1_53etj")]

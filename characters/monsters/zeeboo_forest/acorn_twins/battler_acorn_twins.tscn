@@ -5,7 +5,7 @@
 [ext_resource type="Curve" uid="uid://c3lcyfacaq8km" path="res://game_logic/battle/stat curves/default_stat_99_curve.tres" id="2_p2jyn"]
 [ext_resource type="Curve" uid="uid://ks0i427nait6" path="res://game_logic/battle/stat curves/default_stat_999_curve.tres" id="3_p4mli"]
 [ext_resource type="Script" path="res://characters/monsters/stats.gd" id="4_i8ws5"]
-[ext_resource type="Shader" uid="uid://kiybmuht6dsu" path="res://game_logic/battle/battler_shader.tres" id="5_i6i2x"]
+[ext_resource type="Shader" uid="uid://ytbgv5v4n54d" path="res://characters/shaders/battler_shader_real.tres" id="5_vwclr"]
 
 [sub_resource type="Resource" id="Resource_yo30o"]
 script = ExtResource("4_i8ws5")
@@ -28,8 +28,9 @@ ag_curve = ExtResource("2_p2jyn")
 lu_curve = ExtResource("2_p2jyn")
 exp_needed_curve = ExtResource("3_p4mli")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpk5w"]
-shader = ExtResource("5_i6i2x")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73c0s"]
+shader = ExtResource("5_vwclr")
+shader_parameter/is_selected = null
 shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nypwh"]
@@ -64,12 +65,10 @@ scale = Vector2(-1, 1)
 stats = SubResource("Resource_yo30o")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_rpk5w")
+material = SubResource("ShaderMaterial_73c0s")
 position = Vector2(1, -1)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_nypwh")
-frame = 0
-frame_progress = 0.0
 offset = Vector2(0, -50)
 
 [node name="Button" parent="." index="1"]
