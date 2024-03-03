@@ -41,6 +41,8 @@ exp_needed_curve = ExtResource("3_hgg4p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4w6im"]
 shader = ExtResource("5_ief16")
+shader_parameter/is_selected = null
+shader_parameter/fade = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvnlg"]
 animations = [{
